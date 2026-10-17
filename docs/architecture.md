@@ -9,7 +9,7 @@
 | Tailwind | v4 | Configured **in CSS**, via `@theme` — there is no `tailwind.config.js` |
 | GSAP | 3.15 | Core only, plus `@gsap/react` 2.1.2. No plugins |
 | TypeScript | 5 | `strict` |
-| Fonts | `next/font` | Geist is what loads today — see [`brand/typography.md`](brand/typography.md) |
+| Fonts | `next/font` | **IBM Plex Sans + Mono**, mapped onto `--font-sans` / `--font-mono` — see [`brand/typography.md`](brand/typography.md) |
 
 `next.config.ts` turns on `cacheComponents`, `partialPrefetching` and `reactCompiler`, and routes
 `*.css` through `@tailwindcss/turbopack`. This Next.js version is not the one in most training
@@ -26,12 +26,35 @@ data; the bundled reference is `node_modules/next/dist/docs/`. Read it before wr
   skills/ponytail/    The adopted ponytail ruleset — docs/rules.md is still the contract
 app/
   layout.tsx          Real. Fonts, metadata, INTRO_SCRIPT, <PageIntro />, dark-first body
-  page.tsx            Still the create-next-app scaffold — not the real home page
-  globals.css         The design system: @theme tokens, :root, body, the whole intro
+  page.tsx            The home page: header, hero, about, process, footer
+  globals.css         The design system: @theme tokens (colour, motion, type), :root, body, .bracket, the whole intro
 components/
-  page-intro.tsx      The brand splash. The only "use client" component
+  common/
+    site-header.tsx   Masthead: wordmark
+    site-footer.tsx   Mark, the file listing, the copyright bar. Reads the year behind "use cache"
+    page-intro.tsx    The brand splash. "use client"
+  ui/
+    devices.tsx       Label, Marker, Rule — the design-language primitives
+    status-chip.tsx   The header's clock. "use client"
+    manila-clock.tsx  Live Manila clock (seconds) for hero/footer
+hooks/
+  use-scrolled.ts     Scroll state for the topbar
+lib/
+  sections.ts         Page order. The single source of markers and filename labels — JSX-free
+  placeholders.ts     Every lorem string on the site, in one place — delete when real copy lands
+  manila-time.ts      The status chip's clock, read in Asia/Manila — JSX-free
+  manila-time.test.ts
   intro-timeline.ts   Its timings and shuffle maths — JSX-free, so `node --test` can import it
   intro-timeline.test.ts
+sections/
+  hero/hero.tsx       Statement, equation band, glow mark. Holds the page's only <h1>
+  about/about.tsx     Marker 01 / about.md, the deck's vision statement, the mark
+  events/events.tsx
+  builds/builds.tsx
+  people/people.tsx
+  gallery/gallery.tsx
+  partners/partners.tsx
+  join/join.tsx
 docs/                 This documentation set, beginning at docs/README.md
 public/
   logos/              5 canonical logo variants
@@ -40,22 +63,25 @@ scripts/
   check-links.mjs     Markdown link and anchor check — `npm run check:links`
 ```
 
-`app/page.tsx` is untouched boilerplate. It sets its own backgrounds, so the dark-first
-`body` does not show through it. Replacing it is the start of the real build.
+The page is assembled in `app/page.tsx` from one component per section, in the documented order.
+Every section's marker and filename label comes from `components/sections.ts` rather than being
+typed into the section, so page order has exactly one home — see
+[`brand/design-language.md`](brand/design-language.md#implementation).
 
 ## Rendering model
 
 - **Server by default.** `app/layout.tsx` is a server component. Keep it that way.
-- **One client boundary, at a leaf.** `components/page-intro.tsx` is the only code that opts
-  into `"use client"`, and it wraps only itself. Because it is a client component with no
-  server-only imports it also server-renders its markup, which is what lets the intro paint
-  before hydration — that is a requirement, not a detail. Do not hide it behind
-  `next/dynamic` with `ssr: false`.
+- **Client boundaries at leaves.** `components/page-intro.tsx`, `components/ui/status-chip.tsx`
+  and `components/site-header.tsx` opt into `"use client"`, each wrapping only itself. Because they are client components with no server-only imports they also
+  server-render their markup, which is what lets the intro paint before hydration — that is a
+  requirement, not a detail. Do not hide the intro behind `next/dynamic` with `ssr: false`.
 - **React Compiler is on.** Do not reach for `useMemo` / `useCallback` to control render cost;
   the compiler handles memoisation. Reach for them only when identity matters semantically.
 - **Cache Components are on.** The default is aggressively cached and this is handled for you.
   Anything time- or request-dependent is the exception and needs a deliberate opt-in — see
-  `08-caching.md` in the bundled docs.
+  `08-caching.md` in the bundled docs. The footer's copyright year is the working example:
+  Next 16 refuses to prerender a bare `new Date()`, so the year is read inside a `"use cache"`
+  function in `components/site-footer.tsx`.
 
 ## Where the intro lives, and why
 
@@ -72,27 +98,31 @@ The three-file split is the design: markup and the state flag in `layout.tsx`, p
 | You are adding… | Put it in |
 | --- | --- |
 | A colour or type token | `@theme` in `app/globals.css`, then document it in `brand/` |
+| A motion token | `@theme` in `app/globals.css`, then in [`brand/motion.md`](brand/motion.md) |
+| A new composition device | [`brand/design-language.md`](brand/design-language.md) **first** — device, form, and which section owns it |
 | A one-off section style | `app/globals.css`, alongside the intro block |
-| A test | A `*.test.ts` beside the JSX-free logic it covers — [`skills.md`](skills.md) |
-| A page section | A doc in `docs/sections/<name>/` **first**, then `components/` |
+| A test | A `*.test.ts` beside the JSX-free logic it covers, in `lib/` — [`skills.md`](skills.md) |
+| A page section | A doc in `docs/sections/<name>/` **first**, then `sections/` |
 | An asset | A row in [`assets/inventory.md`](assets/inventory.md) first, then `public/` |
 | A derived asset | A generator, plus the rules in [`skills.md`](skills.md) |
 
 ## What is deliberate
 
 - **No CSS modules, no styled-components.** Tailwind utilities for layout and spacing; plain CSS
-  in `globals.css` only where a component owns a real micro-animation (the intro).
+  in `globals.css` only where a shared class is genuinely needed — the intro, and the `.bracket`
+  device (its brackets must be pseudo-elements so they stay out of the accessible name).
 - **No state library, no router state.** Nothing so far needs it.
 - **No test framework.** `node --test` ships with Node and strips types itself, so unit tests
   cost no dependency. The gates are in [`rules.md`](rules.md).
-- **No component tests.** Nothing renders a component in isolation yet, and adding a DOM harness
-  is not worth it for one animation. `page-intro.tsx` is covered by its extracted maths plus
-  manual inspection — which is why the intro is recorded as unverified in a browser.
+- **No component tests.** Nothing renders a component in isolation, and adding a DOM harness is
+  not worth it. Components are covered by manual inspection — which is why the whole page is
+  recorded as unviewed in a browser, in [tasks.md](tasks.md) and
+  [`rules.md`](rules.md#known-accepted-risks). JSX-free logic (`intro-timeline.ts`,
+  `manila-time.ts`) gets real tests instead.
 
 ## Open questions
 
-1. When the real home page replaces the scaffold, does the intro stay global or become
-   home-only?
+1. The real home page now exists; does the intro stay global or become home-only?
 2. Does the site stay a single page, or gain routes? The header nav documented in
    [`sections/header-nav/README.md`](sections/header-nav/README.md) implies routes that do not
    exist yet.

@@ -81,15 +81,34 @@ Expect ~132KB total. Confirm the size and the numbers against
 3. Check which family it belongs to — maroon is light-surface only, orange is dark-surface only
    ([`rules.md`](rules.md) §7).
 
+A **motion token** is not a colour: there is no contrast to compute and no family to belong to.
+It goes in `@theme` and then in [`brand/motion.md`](brand/motion.md). The values there are the
+whole scale, so a new duration that duplicates an existing one is a mistake rather than a token.
+
 ## Add a section
 
 1. Read [`sections/_template.md`](sections/_template.md). Every section doc uses the same ten
    headings, in the same order.
-2. Create `docs/sections/<name>/README.md`.
-3. Decide required assets, add rows to [`assets/inventory.md`](assets/inventory.md), then place
+2. **Claim its devices.** Every section takes an index marker, a filename label, and at most one
+   other device. The vocabulary and the assignment table are in
+   [`brand/design-language.md`](brand/design-language.md) — pick from there and never invent one.
+   An inserted section **renumbers every marker below it**, because a marker is page position.
+3. Create `docs/sections/<name>/README.md`. §2 names the sections either side; inserting one
+   makes both of their §2 sections wrong, so fix them in the same change.
+4. Decide required assets, add rows to [`assets/inventory.md`](assets/inventory.md), then place
    the files in `public/<name>/`.
-4. Add the row to the index in [`README.md`](README.md).
-5. Only then build the component. Sections are documented before they are coded.
+5. Add the row to the index in [`README.md`](README.md), **in page order**, and give it its
+   marker.
+6. **Add the row to `components/sections.ts`, in page order.** That array is where the marker and
+   the filename label actually come from — the section component asks for them by slug. Do not
+   type a marker into a component; the array is the single source, and it is what keeps the
+   header nav, the footer's file listing and the section docs in step. Leave the new row
+   `built: false` until the anchor exists on the page, so nothing links to a section that is not
+   rendered.
+7. Only then build the component. Sections are documented before they are coded.
+8. Motion is not a per-section decision — use the shared reveal in
+   [`brand/motion.md`](brand/motion.md). If a section seems to need something that doc does not
+   have, add it there first; that is the point of the doc.
 
 ## Add a test
 
@@ -170,8 +189,8 @@ exits `2` on findings, `0` clean, `1` if a target could not be scanned. `/impecc
 `/impeccable critique` are the read-only review commands; `extract` and `polish` write.
 
 Its anti-patterns corroborate the deck rather than fight it: tinted blacks (our obsidian `#080406`
-passes), no gray on colour, no nested cards. It would flag Geist as an overused font — which is
-the pending Geist → IBM Plex Sans swap in [`brand/typography.md`](brand/typography.md).
+passes), no gray on colour, no nested cards. It would flag Geist as an overused font — the swap to
+IBM Plex is now done, so re-run it and expect that flag to be gone.
 
 ## Verify a change
 
@@ -187,6 +206,15 @@ All five pass on `main`. `check:links` walks every markdown file in the repo and
 relative link and `#anchor`, skipping fenced code blocks. Beyond the commands:
 
 - **Docs changed?** `npm run check:links`. It resolves both the file and the heading.
+- **A section doc changed, or a section was added?** Confirm every §2 neighbour reference still
+  names the right sections, and that the index markers agree across the three places that hold
+  the order: [`README.md`](README.md), the table in
+  [`brand/design-language.md`](brand/design-language.md#where-the-devices-live), and
+  `components/sections.ts` — which is what the built page actually renders.
+  `check:links` does not compare them.
+- **Writing copy?** Real copy only, per [`rules.md`](rules.md) §2. Anything that has to be
+  invented while a section is being built goes in `components/placeholders.ts`, so the whole
+  placeholder surface is one file and one grep.
 - **Intro changed?** Walk the four `data-intro` states in
   [`intro.md`](intro.md) — `skip`, `play`, `repeat`, `done` — and the three failure layers.
   `npm test` only proves the timeline arithmetic, not the motion.

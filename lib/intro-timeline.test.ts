@@ -1,7 +1,5 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-// `node --test` resolves the real file, so the extension is required here. Nothing else
-// imports with one — app code goes through the bundler.
 import { T, shuffleIntervals, shuffleOrder } from "./intro-timeline.ts";
 
 const POOL = 3;
@@ -41,6 +39,5 @@ test("the derived total still matches the ~3.1s that docs/intro.md documents", (
   const gaps = shuffleIntervals(T.shuffle).reduce((sum, gap) => sum + gap, 0);
   const total = T.fadeIn + gaps + T.shuffle.crossfade + T.ignition + T.hold + T.gap + T.curtain;
 
-  // Compared at the precision the doc states: the real total is 3.108077.
   assert.equal(Number(total.toFixed(3)), 3.108, "the timeline moved but docs/intro.md still says 3.108s");
 });

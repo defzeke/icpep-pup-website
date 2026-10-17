@@ -34,6 +34,8 @@ the work stands.
 | --- | --- |
 | [brand/overview.md](brand/overview.md) | Vision, tone, audience, why the identity is "dual" |
 | [brand/theme.md](brand/theme.md) | "Silicon and Syntax" and the four visual pillars |
+| [brand/design-language.md](brand/design-language.md) | The page as a technical artefact: labels, markers, codes, rules — and what was rejected |
+| [brand/motion.md](brand/motion.md) | Durations, easings, triggers, and what never animates |
 | [brand/moodboard.md](brand/moodboard.md) | Reference work and what to take from it |
 | [brand/color-palette.md](brand/color-palette.md) | 12 colours, roles, token names, contrast data |
 | [brand/typography.md](brand/typography.md) | IBM Plex Sans, the type scale, and what actually loads today |
@@ -54,13 +56,24 @@ the work stands.
 | Header / navigation | [sections/header-nav/README.md](sections/header-nav/README.md) |
 | Hero | [sections/hero/README.md](sections/hero/README.md) |
 | About | [sections/about/README.md](sections/about/README.md) |
+| Process | [sections/process/README.md](sections/process/README.md) |
 | Events | [sections/events/README.md](sections/events/README.md) |
 | Projects / Build Showcase | [sections/projects/README.md](sections/projects/README.md) |
 | Executives & Advisers | [sections/executives-advisers/README.md](sections/executives-advisers/README.md) |
 | Gallery | [sections/gallery/README.md](sections/gallery/README.md) |
 | Partners / Sponsors | [sections/partners-sponsors/README.md](sections/partners-sponsors/README.md) |
+| FAQ | [sections/faq/README.md](sections/faq/README.md) |
 | CTA / Join Us | [sections/cta-join-us/README.md](sections/cta-join-us/README.md) |
 | Footer | [sections/footer/README.md](sections/footer/README.md) |
+
+The order above **is** the page order, and each section's index marker
+([`01`–`09`](brand/design-language.md#where-the-devices-live)) is its position in it. Process and
+FAQ were added on 2026-10-17 after the composition reference was adopted.
+
+**Two sections the reference site has are deliberately absent:** testimonials and pricing. There
+are no member quotes and no prices, and inventing either would break rule 2 below. Both are
+recorded in [`brand/design-language.md`](brand/design-language.md#rejects) so they are not
+re-proposed by accident. Add testimonials only when real, attributable quotes exist.
 
 ## How to use this
 
@@ -68,6 +81,9 @@ the work stands.
 - **Building a section?** Start at [`sections/_template.md`](sections/_template.md), then read
   that section's doc. Every section doc uses the same ten headings, so they read the same way.
   The checklist is in [`skills.md`](skills.md).
+- **Need a label, a marker, a divider or a code?** Never invent one — take it from
+  [`brand/design-language.md`](brand/design-language.md), which owns the shared vocabulary and
+  lists what was rejected. Motion values come from [`brand/motion.md`](brand/motion.md).
 - **Need a colour or font size?** Never invent one. Take it from `brand/` and reference the
   token name, not the raw hex.
 - **Adding an asset?** Add a row to `assets/inventory.md` first, then drop the file in

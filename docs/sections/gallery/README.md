@@ -14,6 +14,8 @@ Gallery says "this is what it was like" — it converts hesitation into confiden
 Home page, after [executives-advisers](../executives-advisers/README.md). Before
 [partners-sponsors](../partners-sponsors/README.md) — visual proof before partner logos.
 
+Gallery is index marker **`06`**.
+
 ## 3. Layout
 
 - **Grid with a fixed ratio.** Pick one dominant ratio (1:1 recommended) and crop to it.
@@ -26,11 +28,21 @@ Home page, after [executives-advisers](../executives-advisers/README.md). Before
   (traces between tiles, or a lightbox that implies sequence).
 - Avoid coloured frames around photos; the photography supplies its own colour, and the
   brand palette will fight it.
+- The section label is **`gallery/`** — a directory, like `projects/`. Both are collections
+  rather than records, and the suffix says so. See
+  [design-language.md](../../brand/design-language.md#where-the-devices-live).
+- **The label sits here and minimally.** Gallery is the page's least textual section — the
+  images are the content — so this is the one place the metadata should be a single line and
+  nothing else. Do not add reference codes per tile to match Events and Projects; three
+  numbered sections in a row would make the numbering look like a filing system rather than a
+  signal.
 
 ## 4. Content and copy
 
 | Field | Type | Required | Source |
 | --- | --- | --- | --- |
+| Filename label | `gallery/` | Yes | Proposed |
+| Index marker | `06` | Yes | Proposed |
 | Image | 1:1 (crop from 1:1 or 4:5 source) | Yes | Social output |
 | Alt text | string | Yes | `TBC` — see below |
 | Caption | string | No | `TBC` |
@@ -52,6 +64,7 @@ assembling a line-following robot at a workshop table") or mark the purely decor
 | Section background | `--color-obsidian` |
 | Tile border / hover ring | `--color-bright-orange` |
 | Caption text | `--color-off-white` |
+| Filename label / index marker | `--color-light-orange`, Label level, **Mono** |
 | Overlay scrim | Obsidian at high opacity — a pure black scrim is off-palette |
 | Optional filter chips | `--color-carbon` surface, `--color-light-orange` active |
 
@@ -70,7 +83,9 @@ with explicit `sizes`; do not ship multi-megabyte originals to the grid.
   open, focus returned to the originating tile on close.
 - The lightbox must expose the caption and the current position ("4 of 20").
 - Lazy-load below-the-fold tiles; the first row may load eagerly.
-- Hover: subtle zoom or brightness shift, with the same treatment on every tile.
+- Hover: subtle zoom or brightness shift, with the same treatment on every tile, at the `fast`
+  duration from [motion.md](../../brand/motion.md#the-vocabulary).
+- The lightbox transition, where it exists, is `base` at most, and instant under reduced motion.
 
 ## 8. Accessibility
 
@@ -79,6 +94,8 @@ with explicit `sizes`; do not ship multi-megabyte originals to the grid.
 - `aria-label` on tiles without visible captions, e.g. `"Open image 4 of 20"`.
 - Respect `prefers-reduced-motion`: the zoom and lightbox transitions become instant.
 - Ensure the lightbox's close control is the first focusable element inside it.
+- The filename label and index marker are decorative — `aria-hidden="true"`, for the same
+  reason as in [about](../about/README.md).
 
 ## 9. Acceptance criteria
 
@@ -88,6 +105,7 @@ with explicit `sizes`; do not ship multi-megabyte originals to the grid.
 - [ ] Arrow keys move between images while the lightbox is open.
 - [ ] Below-the-fold images lazy-load; the first row does not.
 - [ ] With reduced motion, no zoom or fade transitions run.
+- [ ] The section carries no per-tile reference codes.
 
 ## 10. Open questions
 
@@ -98,3 +116,6 @@ with explicit `sizes`; do not ship multi-megabyte originals to the grid.
 4. **Do we have consent** to publish photographs of identifiable members?
 5. Is there a photographer to credit, and should credit be shown?
 6. Should the gallery **link back to its event**?
+7. **Is this section distinct enough from Events and Projects to justify its length?** All
+   three show imagery. If the gallery turns out to be event photos, folding it into Events as
+   an album may produce a shorter, stronger page — and the page is already twelve sections.

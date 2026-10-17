@@ -14,6 +14,21 @@ Tendril Studio is a motion/3D studio, so these references are about **dimensiona
 rendering and lighting**, not layout. Read them as "how should our surfaces behave", not
 "how should our pages be arranged".
 
+## Composition reference
+
+The deck's mood board covers surfaces. It says nothing about **structure** — how sections are
+arranged, labelled and sequenced — so a separate composition reference was adopted by decision
+on 2026-10-17:
+
+| Reference | Link | What to take from it |
+| --- | --- | --- |
+| neutomni | <https://neutomni.com/> | The page as a self-describing technical artefact: section labels as filenames, index markers, reference codes, bracket affordances. Specified in [design-language.md](design-language.md) |
+
+What is **not** taken is as important as what is: no assets, no copy, no palette, and none of
+its devices that do not fit an organization rather than a studio. The rejects are listed in
+[design-language.md](design-language.md#rejects), and the copyright reasoning is in
+[design-language.md](design-language.md#copyright).
+
 ## How this maps to the theme
 
 Both references sit directly behind the **Atmospheric** pillar: deep, near-black bases, and
@@ -29,6 +44,10 @@ your most reliable in-house reference.
 The five images on this page are **third-party reference material**, not owned assets.
 They are deliberately **not** copied into `public/` and must never ship as part of the site.
 They are recorded here as links only.
+
+The same applies to the composition reference above: **structure and idiom may be borrowed,
+assets and copy may not.** Nothing from neutomni enters `public/`, and no string of their copy
+appears in this site. See [design-language.md](design-language.md#copyright).
 
 If a future section needs a comparable visual, commission or produce it — do not crop a
 reference.

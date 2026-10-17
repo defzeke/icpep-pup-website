@@ -45,7 +45,8 @@ bright fills. "Glowing apertures" means light escapes from *inside* a form — t
 
 The fullest expression of this pillar so far is the **[page intro](../intro.md)**: a dimmed mark
 that shuffles through the flat variants, ignites into the glow, then lifts a curtain off the
-page. It is the theme's only piece of motion, and it is the reference for tone.
+page. It is the site's most elaborate motion and the reference for tone. Everything else the
+page does is bounded by [motion.md](motion.md), which this pillar owns.
 
 ### 4. Algorithmic
 
@@ -56,6 +57,9 @@ reflect code modularity, syntax flow and systematic logic.
 aligned baselines, repeated modules. Terminal aesthetics (monospace labels, `ID //` and
 `ROLE //` style keys, letter-spaced all-caps) are in-theme; the deck uses them on the
 mascot page.
+
+Those devices are specified in [design-language.md](design-language.md), which is where this
+pillar stops being a direction and becomes a vocabulary.
 
 ## Applying the pillars per section
 
@@ -69,6 +73,10 @@ mascot page.
 A useful test: **every section should express at least two pillars**, and the pillars should
 rotate so the page doesn't read as one long texture.
 
+Pillar 4 works the same way one level down, over **devices** rather than pillars: each section
+carries an index marker, a filename label, and at most one other. The assignment is in
+[design-language.md](design-language.md#where-the-devices-live).
+
 ## Do / Don't
 
 **Do**
@@ -77,6 +85,8 @@ rotate so the page doesn't read as one long texture.
 - Reuse the 30° isometric angle consistently.
 - Use letter-spaced all-caps for metadata labels.
 - Let traces imply movement and connection between elements.
+- Let the page describe itself — name its parts, number its sections. See
+  [design-language.md](design-language.md).
 
 **Don't**
 
@@ -85,13 +95,13 @@ rotate so the page doesn't read as one long texture.
 - Use the glow gradient as a general-purpose background wash.
 - Mix isometric and flat-perspective graphics in the same composition.
 - Decorate with traces that lead nowhere; they must connect something to something.
+- Let a device appear in every section. Metadata is seasoning, not the meal.
 
 ## Open questions
 
 1. Is there an approved **isometric grid asset** (or the source file it came from) that the
    web side should use as a background pattern?
-2. What is the intended **motion** language? The deck says "high-end motion studio
-   aesthetics" and links tendril.studio work as inspiration, but specifies no durations,
-   easings or triggers. Partly answered: the [page intro](../intro.md) fixes durations and
-   easings for the splash. The rest of the site still has none.
+2. ~~What is the intended **motion** language?~~ **Answered** by [motion.md](motion.md), which
+   fixes durations, easings, triggers and the banned list for everything outside the splash. The
+   intro keeps its own timeline in [intro.md](../intro.md), and the two agree where they meet.
 3. Are the pillar names public-facing (shown on the site) or purely internal guidance?

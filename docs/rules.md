@@ -43,12 +43,18 @@ accessibility, or anything the user asked for.
    `data-intro="play"` / `"repeat"`. No JS must still mean a fully usable site. Never hide the
    page behind the overlay, and never set `history.scrollRestoration`.
 4. **Motion respects `prefers-reduced-motion`.** Under `reduce` there is no intro at all, no
-   pulsing, no parallax.
+   pulsing, no parallax. Everything the page animates is bounded by
+   [`brand/motion.md`](brand/motion.md): durations come from its tokens, and its **banned
+   list** — scroll-jacking, parallax, auto-advancing carousels, animating a focus indicator —
+   is part of this contract, not a preference.
 
 ## Design
 
-5. **Tokens, never raw hex.** Take colour and type from [`brand/`](brand/overview.md) by token
-   name. Tokens are defined once, in `app/globals.css`. **This applies to tooling too:** an
+5. **Tokens, never raw hex.** Take colour, type and motion from [`brand/`](brand/overview.md) by
+   token name. Tokens are defined once, in `app/globals.css`. The shared composition vocabulary —
+   labels, markers, codes, rules, chips — is owned by
+   [`brand/design-language.md`](brand/design-language.md): use a device from there, and add a new
+   one to that doc before using it anywhere. **This applies to tooling too:** an
    external design tool may review this repo, but `docs/brand/` stays the only source of design
    truth — never commit a `PRODUCT.md` or `DESIGN.md` at the root, and never let a generated
    design system replace or shadow these docs. See [`skills.md`](skills.md).
@@ -123,5 +129,10 @@ verification procedures in [`skills.md`](skills.md) apply to whatever you touche
   Do not run it.** Revisit when upstream moves, not before.
 - **The intro has never been seen in a browser.** No browser automation was available, so its
   timeline is verified numerically and by
-  [`intro-timeline.test.ts`](../components/intro-timeline.test.ts) — not by eye. Treat any change
+  [`intro-timeline.test.ts`](../lib/intro-timeline.test.ts) — not by eye. Treat any change
   to its motion as unverified until someone watches it.
+- **Nothing on the built page has been seen in a browser either.** The type clamps, the band
+  rhythm, the logo marks' bounding boxes, the status chip's reserved width and the mobile layout
+  at 375 px are all arithmetic and reasoning, not observation. `next build` and the emitted HTML
+  prove the markup and the classes; they cannot prove it looks right. The first browser pass is
+  in [tasks.md](tasks.md) under *Next*.

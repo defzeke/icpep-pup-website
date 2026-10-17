@@ -15,6 +15,28 @@ Terms used throughout this repo, in the sense this repo means them.
 | **Pixie** | The official mascot. See [`brand/mascot.md`](brand/mascot.md). |
 | **Glow** | The hero lockup with emitted light. The intro's landing image. |
 
+## Design language
+
+The shared vocabulary for composing the page. Defined in
+[`brand/design-language.md`](brand/design-language.md) and
+[`brand/motion.md`](brand/motion.md); a section doc describes how a device appears, never what
+one is.
+
+| Term | Meaning |
+| --- | --- |
+| **Blueprint treatment** | The concept behind the design language: the page presents itself as a technical artefact — named, numbered, labelled, ruled. The name is the deck's own ("The Integrated Engineering Blueprint"). |
+| **Device** | One reusable composition element: a label, a marker, a code, a rule, a chip. A section carries at most three. |
+| **Index marker** | A section's ordinal (`01`–`09`), which is its position in page order. Renumbers when a section is inserted. |
+| **Filename label** | A section's name rendered as a filename — `about.md`, `events.json`, `makefile`. The suffix encodes the content type. |
+| **Metadata key** | `KEY // value`, uppercase and letter-spaced. The deck's own form from the mascot page. |
+| **Reference code** | A per-item id (`EVT.03`, `PRJ.01`) that may encode **only** facts the page already holds. See the precision rule. |
+| **Rule** | The single divider form: a 1px dashed hairline at 0°, 45° or 90°. |
+| **Bracket label** | `[ Join ICpEP ]`. Interactive affordances only; the brackets are CSS, never characters in the accessible name. |
+| **Status chip** | The header's live state word plus clock. The state must be true and owned. |
+| **Equation band** | The hero's reading of `PLAN · BUILD · DEPLOY · REPEAT` as a system rather than a list. |
+| **Overlong line** | The marquee, made static: one long line, horizontally clipped, never animated (WCAG 2.2.2). |
+| **Mono** | IBM Plex Mono. Metadata only — never headings, prose or buttons. See [`brand/typography.md`](brand/typography.md). |
+
 ## Assets
 
 | Term | Meaning |
@@ -37,6 +59,8 @@ Terms used throughout this repo, in the sense this repo means them.
 | **Opt-in / opt-out** | For the intro: it appears only when JS confirms it should (`opt-in`), and every failure means no overlay. |
 | **Hand-off** | The `[data-intro-reveal]` hook: content rises with the intro's curtain. |
 | **Ignition** | The beat where the shuffle stops and the glow lights up. |
+| **Reveal** | The shared entrance animation: rise 24px, fade in, 0.06s stagger. Defined once in [`brand/motion.md`](brand/motion.md) and consumed by the intro's hand-off, so sections do not invent their own. |
+| **Motion token** | `--duration-*` and `--ease-*`. Defined in `@theme` alongside the colour and type tokens; never a raw `ms` value in a component. |
 
 ## Process
 

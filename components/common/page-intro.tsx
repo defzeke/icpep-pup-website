@@ -1,11 +1,10 @@
 "use client";
 
+// Contract: docs/intro.md
 import { useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-import { T, shuffleIntervals, shuffleOrder } from "./intro-timeline";
-
-// Page intro. Contract, timeline and failure modes: docs/intro.md.
+import { T, shuffleIntervals, shuffleOrder } from "@/lib/intro-timeline";
 
 const VARIANTS = [
   "/intro/mono.webp",
@@ -14,10 +13,8 @@ const VARIANTS = [
   "/intro/glow.webp",
 ] as const;
 
-// glow is excluded from the shuffle so it can only ever be the landing.
 const POOL = VARIANTS.length - 1;
 const LAST = VARIANTS.length - 1;
-
 const STORAGE_KEY = "icpep:intro";
 
 export function PageIntro() {
@@ -40,11 +37,9 @@ export function PageIntro() {
       mm.add("(prefers-reduced-motion: no-preference)", () => {
         const isRepeat = mode === "repeat";
 
-        // Disarm the CSS bailout; see docs/intro.md.
         const bailout = root.current?.querySelector<HTMLElement>(".intro__bailout");
         if (bailout) bailout.style.animation = "none";
 
-        // Warm the decode cache; the first swap is only ~0.35s away.
         for (const img of items) img.decode().catch(() => {});
 
         gsap.set(items, { autoAlpha: 0 });
@@ -81,7 +76,6 @@ export function PageIntro() {
           showing = next;
         }
 
-        // Clear the final swap before the ignition reuses that same element.
         at += T.shuffle.crossfade;
 
         tl.to(items[showing], { autoAlpha: 0, duration: T.ignition, ease: "power2.inOut" }, at);
@@ -94,7 +88,6 @@ export function PageIntro() {
         const curtainAt = exitAt + T.gap;
         tl.to(panel, { scaleY: 0, duration: T.curtain, ease: "power2.inOut" }, curtainAt);
 
-        // Hand-off: sections mark themselves [data-intro-reveal] to rise with the curtain.
         const reveal = gsap.utils.toArray<HTMLElement>("[data-intro-reveal]");
         if (reveal.length) {
           tl.from(

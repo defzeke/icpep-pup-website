@@ -11,8 +11,10 @@ section should feel restrained rather than promotional.
 
 ## 2. Placement and order
 
-Home page, after [gallery](../gallery/README.md). Before
-[cta-join-us](../cta-join-us/README.md) — proof, then ask.
+Home page, after [gallery](../gallery/README.md). Before [faq](../faq/README.md) — proof, then
+the last questions.
+
+Partners / Sponsors is index marker **`07`**.
 
 ## 3. Layout
 
@@ -23,11 +25,19 @@ Home page, after [gallery](../gallery/README.md). Before
   *Algorithmic* (a strict grid of equal cells).
 - If tiers exist, separate them with headings rather than quality — a "Platinum" row that
   is visually louder than a "Community" row is fine, but both must be readable.
+- The section label is **`partners.json`** — records, like `events.json`. See
+  [design-language.md](../../brand/design-language.md#where-the-devices-live).
+- **This section is deliberately the quietest on the page.** It sits between the gallery and
+  the FAQ, and it has the least to say. One label, one grid, one rule under the label. Resist
+  the reference site's density here: a studio showing its clients is doing a different job from
+  an org listing its backing.
 
 ## 4. Content and copy
 
 | Field | Type | Required | Source |
 | --- | --- | --- | --- |
+| Filename label | `partners.json` | Yes | Proposed |
+| Index marker | `07` | Yes | Proposed |
 | Partner name | string | Yes | `TBC` |
 | Logo | SVG/PNG, transparent | Yes | `MISSING` |
 | Tier / relationship | string | No | `TBC` |
@@ -44,7 +54,8 @@ wall is worse than no wall.
 | Section background | `--color-carbon` (alternating band) |
 | Cell surface | `--color-obsidian` |
 | Partner logos | Presented in their own brand colours, or uniformly white/mono on dark |
-| Tier heading | Label level, uppercase, letter-spaced, `--color-light-orange` |
+| Filename label / index marker | `--color-light-orange`, Label level, **Mono** |
+| Tier heading | Label level, uppercase, letter-spaced, `--color-light-orange`, **Mono** |
 | Hover ring | `--color-crimson` |
 
 **On logo treatment:** third-party logos vary wildly in weight and colour. Two honest
@@ -59,6 +70,8 @@ treatment of a partner logo usually requires permission. **Ask before doing it.*
 | Partner logos | `public/partners/<slug>.svg` | Preferred SVG; **none exist yet** |
 | University marks | `public/partners/...` | If PUP marks are used, they carry their own usage rules |
 
+No new assets for the devices — the label and rule are text and CSS.
+
 Alt text: the partner's name. If the name is also visible as text in the cell, use `alt=""`
 to avoid the screen reader announcing it twice.
 
@@ -68,7 +81,8 @@ to avoid the screen reader announcing it twice.
 - If there is no URL, render the logo as a non-interactive image — do not make a dead link.
 - External links: `rel="noopener noreferrer"`.
 - No rotation or carousel for this section (a hard rule, not a preference): a carousel makes
-  partners invisible at any given moment and is a well-known usability failure.
+  partners invisible at any given moment and is a well-known usability failure. This is now a
+  site-wide rule — see [motion.md](../../brand/motion.md#not-allowed).
 
 ## 8. Accessibility
 
@@ -78,6 +92,7 @@ to avoid the screen reader announcing it twice.
 - Logos that are pure decoration beside a visible text name should be `alt=""`.
 - Ensure logos remain legible against their cell at every breakpoint; a thin grey logo on
   Obsidian can drop below perceptible contrast even though it is not text.
+- The filename label and index marker are decorative — `aria-hidden="true"`.
 
 ## 9. Acceptance criteria
 
@@ -87,6 +102,7 @@ to avoid the screen reader announcing it twice.
 - [ ] The section is not rendered when the partner list is empty.
 - [ ] No carousel or auto-rotation exists.
 - [ ] Tier membership is conveyed by headings, not colour alone.
+- [ ] The section carries no device beyond its label, marker and one rule.
 
 ## 10. Open questions
 
@@ -97,3 +113,6 @@ to avoid the screen reader announcing it twice.
 4. Is there a **sponsorship programme** (levels, benefits) that deserves its own page, in
    which case this section becomes a summary linking out?
 5. Should the university (PUP) appear as a partner, and are its marks licensed for use here?
+6. **Is a twelve-section page too long,** and is this the section to cut? It is the thinnest
+   content on the page and the one whose absence would cost the least — but it is also the only
+   evidence of institutional backing, so the answer depends on whether any partners exist yet.

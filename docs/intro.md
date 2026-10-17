@@ -5,12 +5,12 @@ glow, then lifts a curtain off the page behind it.
 
 ## When it plays
 
-| Situation | Behaviour |
-| --- | --- |
-| First full page load in a session | Full sequence, ~3.1s |
-| Later full page loads in the same session | Shortened, ~1.25s, opening on the settled glow |
-| Client-side navigation between routes | Nothing — the root layout does not remount |
-| `prefers-reduced-motion: reduce` | Nothing, ever |
+| Situation                                 | Behaviour                                       |
+| ----------------------------------------- | ----------------------------------------------- |
+| First full page load in a session         | Full sequence, \~3.1s                           |
+| Later full page loads in the same session | Shortened, \~1.25s, opening on the settled glow |
+| Client-side navigation between routes     | Nothing — the root layout does not remount      |
+| `prefers-reduced-motion: reduce`          | Nothing, ever                                   |
 
 It lives in `app/layout.tsx`, so it runs on **every** full page load, not just `/`. Moving
 `<PageIntro />` into `app/page.tsx` makes it home-only; that is a one-line change.
@@ -22,7 +22,7 @@ It lives in `app/layout.tsx`, so it runs on **every** full page load, not just `
 | `app/layout.tsx` | `INTRO_SCRIPT`, the `data-intro="skip"` default, mounting `<PageIntro />` |
 | `app/globals.css` | `.intro`, `.intro__*`, the reduced-motion override |
 | `components/page-intro.tsx` | The timeline and the overlay markup |
-| `components/intro-timeline.ts` | `T` and the shuffle maths — JSX-free, so it is testable |
+| `lib/intro-timeline.ts` | `T` and the shuffle maths — JSX-free, so it is testable |
 | `public/intro/*.webp` | Four derived 576px assets — see [`assets/inventory.md`](assets/inventory.md) |
 
 ## The `data-intro` state machine
@@ -75,10 +75,10 @@ First visit, seconds from hydration:
 | 2.26 | Panel `scaleY: 1 → 0` from the top — the curtain |
 | 3.11 | `data-intro="done"` |
 
-All timings are `T` in [`components/intro-timeline.ts`](../components/intro-timeline.ts), which
+All timings are `T` in [`lib/intro-timeline.ts`](../lib/intro-timeline.ts), which
 also holds `shuffleIntervals()` (the quadratic deceleration) and `shuffleOrder()`. They sit in a
 JSX-free file so `node --test` can import them — see
-[`intro-timeline.test.ts`](../components/intro-timeline.test.ts).
+[`intro-timeline.test.ts`](../lib/intro-timeline.test.ts).
 
 `VARIANTS` is ordered **form → mark → name → emitted light** — `mono`, `mark`, `primary`,
 `glow`. The opening frame is `[0]` and the landing is `[LAST]`; only the middle is shuffled. The
