@@ -3,6 +3,20 @@
 Non-negotiables for anyone — human or agent — changing this repo. Rationale lives in the
 linked doc, not here.
 
+## Who runs git
+
+The maintainer owns the repository's history. **Never run anything that changes the index, the
+working tree or history** — `add`, `commit`, `amend`, `push`, `merge`, `rebase`, `reset`,
+`restore`, `stash`, `clean`, or creating branches and tags.
+
+Read-only inspection is expected: `git status`, `git diff`, `git log`, `git show`. Verifying a
+claim often means looking at the tree.
+
+**Hand off instead.** Report what changed and propose a commit message; let the maintainer run it.
+If a commit looks wrong, say so rather than repairing it. If your change touches `AGENTS.md`, say
+so — the machine-managed Next.js block has to be committed with the work or it reappears as a
+diff.
+
 ## Approach
 
 Adopted from [Ponytail](https://github.com/DietrichGebert/ponytail) (MIT), and loaded as a
@@ -34,7 +48,10 @@ accessibility, or anything the user asked for.
 ## Design
 
 5. **Tokens, never raw hex.** Take colour and type from [`brand/`](brand/overview.md) by token
-   name. Tokens are defined once, in `app/globals.css`.
+   name. Tokens are defined once, in `app/globals.css`. **This applies to tooling too:** an
+   external design tool may review this repo, but `docs/brand/` stays the only source of design
+   truth — never commit a `PRODUCT.md` or `DESIGN.md` at the root, and never let a generated
+   design system replace or shadow these docs. See [`skills.md`](skills.md).
 6. **Dark-first.** Obsidian (`--color-obsidian`) is the page base. Do not reintroduce
    `prefers-color-scheme` — see [`brand/color-palette.md`](brand/color-palette.md).
 7. **Contrast pairs are fixed.** The maroon family only passes on light surfaces; the orange
@@ -75,7 +92,9 @@ accessibility, or anything the user asked for.
 15. **Security tooling reports; it does not block.** `npm audit` and the gitleaks workflow are
     advisory. There is no on-call here, and a gate nobody can fix is a gate that gets disabled.
 
-## Before you commit
+## Gates
+
+Run all five before handing work over. See *Who runs git* above for who commits.
 
 ```bash
 npx tsc --noEmit

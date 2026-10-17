@@ -22,6 +22,7 @@ scaffold at `app/page.tsx` has not been replaced yet.
 | See the intro in a browser | It has only ever been verified numerically — [`intro.md`](intro.md) |
 | Get a headline for the hero | The site's most important copy, and the deck supplies none — [`sections/hero/README.md`](sections/hero/README.md) |
 | Name someone who owns logo re-exports | The `26-27` chip needs a manual re-export each year — [`brand/logos.md`](brand/logos.md) |
+| Try `npx impeccable detect` on the CSS | Its 59 rules have never been run against this repo — [`skills.md`](skills.md) |
 
 ## Needs a decision
 
@@ -47,6 +48,7 @@ with a trap attached:
 ## Done
 
 **2026-10-17** — the page intro; the design system and dark-first base; 7 assets extracted from
-the brand deck; the 26-document documentation set; code comments stripped to invariants and
-pointers; the ponytail ruleset adopted as a project skill; `node --test` and the markdown link
-check wired up as gates.
+the brand deck; the 27-document documentation set; code comments stripped to invariants and
+pointers; the ponytail ruleset adopted as a project skill; the git-ownership rule; `node --test`
+and the markdown link check wired up as gates; impeccable adopted for design review, its artifacts
+gitignored.

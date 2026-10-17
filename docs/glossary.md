@@ -43,9 +43,11 @@ Terms used throughout this repo, in the sense this repo means them.
 | Term | Meaning |
 | --- | --- |
 | **Ponytail** | The adopted ruleset for writing the smallest complete change. Loaded from [`.opencode/skills/ponytail/SKILL.md`](../.opencode/skills/ponytail/SKILL.md); [`rules.md`](rules.md) is the contract where the two disagree. |
+| **Impeccable** | The external design-review tool. Installed globally, never vendored — see [`skills.md`](skills.md). It reviews this repo; it does not define its design system. |
+| **`<skill-base-dir>`** | The folder holding a skill's own `SKILL.md`. A globally installed skill still works in OpenCode by rebinding its launcher paths against this — OpenCode does not substitute variables in skill bodies. |
 | **Laziness ladder** | The six rungs checked before writing code: does it need to exist → already in this codebase → standard library → installed dependency → one line → the minimum that works. |
 | **`shortcut:` comment** | The only permitted comment form besides an invariant: `shortcut: <the limit>, <when to upgrade>`. A named deferral, not a to-do. |
-| **Gate** | A command that must pass before commit. See [`rules.md`](rules.md). |
+| **Gate** | A command that must pass before handing work over. See [`rules.md`](rules.md). |
 | **Accepted risk** | A known, deliberate exposure recorded in [`rules.md`](rules.md) instead of fixed. |
 
 ## Writing

@@ -37,8 +37,8 @@ they survive a resize:
   same dimensions or smaller"*. Use `k = size / BOX` for the offset maths, not `r` — the clamp
   is the more accurate answer, not just a guard.
 - **`sharp` is not a declared dependency.** It is present transitively via Next's image
-  optimiser. Either add it as a devDependency before committing a generator script, or run the
-  generator from a scratch file outside the repo and leave `public/intro/` as the only artefact.
+  optimiser. Either add it as a devDependency before adding a generator script to the repo, or run
+  the generator from a scratch file outside the repo and leave `public/intro/` as the only artefact.
 
 **Verify before you accept the output.** All four must agree:
 
@@ -68,7 +68,7 @@ Expect ~132KB total. Confirm the size and the numbers against
    separate soft mask. Without compositing it, the transparency is lost.
 3. **Page numbers jump.** The deck goes `03 → 05` and `08 → 10`; there is no `04` and no `09`.
    Do not treat the gap as a missing file.
-4. **Record before committing.** Add the row to [`assets/inventory.md`](assets/inventory.md)
+4. **Record before adding the file.** Add the row to [`assets/inventory.md`](assets/inventory.md)
    first — source page, pixel size, repo path, alt text — then drop the file in `public/`.
 5. **Never copy third-party imagery.** Mood-board references stay as URLs.
 
@@ -129,6 +129,49 @@ the same ground.
 
 `.github/dependabot.yml` opens grouped weekly PRs for npm and monthly ones for actions. It only
 ever proposes **upgrades**, so it will not offer the `eslint-config-next` downgrade above.
+
+## Review the design
+
+[Impeccable](https://github.com/pbakaus/impeccable) (Apache-2.0) is the external design-review tool
+this project leans on — a skill plus a `/impeccable` command covering critique, audit, polish,
+typography, colour, motion and responsive behaviour.
+
+Install it **globally, not into this repo**:
+
+```bash
+npx impeccable install -y --providers=opencode --scope=global
+```
+
+Drop `-y` for the interactive prompts; `npx impeccable update` refreshes it. It lands in
+`~/.config/opencode/skills/impeccable/` (`$OPENCODE_CONFIG_DIR` overrides that) plus
+`commands/impeccable.md` — **21MB, 19MB of it the platform binary**, which is the argument against
+vendoring it. On OpenCode it installs only the skill and the command: the automatic edit hook is
+limited to harnesses that have a hook surface, and OpenCode is not one, so nothing runs on its own.
+
+Three things that are easy to get wrong:
+
+- **A global install works by rebinding, not substitution.** OpenCode does not substitute variables
+  in `SKILL.md` bodies, so the skill defines `<skill-base-dir>` as the folder holding its own
+  `SKILL.md` and states that it resolves every `.opencode/skills/impeccable/scripts/...` command.
+  Those literal paths are canonical, not project paths. If the launcher is ever reported missing,
+  that instruction was skipped — on Windows the real path is
+  `~/.config/opencode/skills/impeccable/scripts/impeccable.cmd`, since there is no `sh`.
+- **No download happens on first use.** The engine ships beside the launcher, so an empty
+  `~/.impeccable/bin/` is correct. That cache is the `npx`/CLI fallback only.
+- **It does not get to define design truth.** `/impeccable init` writes a root `PRODUCT.md` and
+  `/impeccable document` a root `DESIGN.md`; **never commit either**
+  ([`rules.md`](rules.md) §5). Do not run `init` here at all — `docs/` already carries the product
+  truth it would try to capture, and the skill degrades gracefully without it. Point the review
+  commands at the code, take their findings as input, and record anything you accept in the section
+  doc that owns it.
+
+`npx impeccable detect app/` runs the 59 deterministic rules standalone — no skill, no LLM — and
+exits `2` on findings, `0` clean, `1` if a target could not be scanned. `/impeccable audit` and
+`/impeccable critique` are the read-only review commands; `extract` and `polish` write.
+
+Its anti-patterns corroborate the deck rather than fight it: tinted blacks (our obsidian `#080406`
+passes), no gray on colour, no nested cards. It would flag Geist as an overused font — which is
+the pending Geist → IBM Plex Sans swap in [`brand/typography.md`](brand/typography.md).
 
 ## Verify a change
 

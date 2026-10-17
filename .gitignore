@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# impeccable — local review artifacts, never committed (docs/skills.md)
+/PRODUCT.md
+/DESIGN.md
+/.impeccable/

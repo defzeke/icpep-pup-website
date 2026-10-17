@@ -8,6 +8,10 @@ contract. Then [`docs/architecture.md`](docs/architecture.md) for the stack and 
 [`docs/skills.md`](docs/skills.md) for the procedures. Full index:
 [`docs/README.md`](docs/README.md). Returning to in-flight work? [`docs/tasks.md`](docs/tasks.md).
 
+**Never stage, commit, amend, push or merge — the maintainer owns the repository's history.**
+Read-only `git status` / `diff` / `log` are fine. Hand off with a summary and a proposed commit
+message instead.
+
 <!-- BEGIN:nextjs-agent-rules -->
 
 ## This is NOT the Next.js you know
