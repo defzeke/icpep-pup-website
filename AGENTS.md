@@ -1,3 +1,13 @@
+# ICpEP SE – PUP Manila
+
+The website for the PUP Manila chapter of the **Institute of Computer Engineers of the
+Philippines – Student Edition**, built from the organization's brand guidelines deck.
+
+**Read [`docs/rules.md`](docs/rules.md) before changing anything.** It is short, and it is the
+contract. Then [`docs/architecture.md`](docs/architecture.md) for the stack and file map, and
+[`docs/skills.md`](docs/skills.md) for the procedures. Full index:
+[`docs/README.md`](docs/README.md).
+
 <!-- BEGIN:nextjs-agent-rules -->
 
 ## This is NOT the Next.js you know

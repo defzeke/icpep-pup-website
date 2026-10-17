@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ICpEP SE – PUP Manila
 
-## Getting Started
+The website for the PUP Manila chapter of the **Institute of Computer Engineers of the
+Philippines – Student Edition**, built from the organization's brand guidelines deck.
 
-First, run the development server:
+> **Status: early.** The design system, the page intro and the documentation are in place. The
+> page content is not — `app/page.tsx` is still the `create-next-app` scaffold.
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+| Command | |
+| --- | --- |
+| `npm run dev` | Dev server (Turbopack) |
+| `npm run build` | Production build |
+| `npm start` | Serve the production build |
+| `npm run lint` | ESLint |
+| `npx tsc --noEmit` | Type check |
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Documentation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Start at **[docs/README.md](docs/README.md)**.
 
-## Learn More
+- **[docs/rules.md](docs/rules.md)** — the non-negotiables. Read this one first.
+- **[docs/architecture.md](docs/architecture.md)** — stack, file map, rendering model.
+- **[docs/skills.md](docs/skills.md)** — repeatable procedures: regenerate assets, add a token,
+  add a section, verify a change.
+- **[docs/intro.md](docs/intro.md)** — the brand splash: states, timeline, failure modes.
+- **[docs/brand/overview.md](docs/brand/overview.md)** — colour, type, logo, mascot, theme.
+- **[docs/sections/hero/README.md](docs/sections/hero/README.md)** — one doc per page section.
 
-To learn more about Next.js, take a look at the following resources:
+## What exists
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Path | |
+| --- | --- |
+| `app/layout.tsx` | Real — fonts, metadata, and the inline script that arms the intro |
+| `app/globals.css` | Real — brand tokens, dark-first base, the whole intro |
+| `components/page-intro.tsx` | Real — the brand splash |
+| `public/logos/`, `public/intro/` | Real — canonical brand assets and derived intro assets |
+| `app/page.tsx` | **Still the scaffold.** The real home page is not built |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Source of truth
 
-## Deploy on Vercel
+Assets and rules come from `website assets.pdf`, the organization's brand guidelines deck
+(10 pages, 1440 × 817.92 pt). Where the deck is silent, the gap is recorded as an open question
+rather than guessed at.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Third-party mood-board imagery is referenced by URL only, never copied into this repo.
