@@ -1,60 +1,37 @@
 import { PLACEHOLDER_COPY } from "@/lib/placeholders";
+import { HeroScroll } from "./components/hero-scroll";
 import { HeroVisual } from "./components/hero-visual";
-import { HeroMetadata } from "./components/hero-metadata";
-
-const P = PLACEHOLDER_COPY;
 
 export function Hero() {
   return (
-    <section className="relative isolate overflow-hidden bg-obsidian">
-      <div className="iso-grid absolute inset-0" aria-hidden="true" />
+    <HeroScroll>
+      <div className="sticky top-0 min-h-svh overflow-hidden group-data-[animated=true]:h-svh">
+        <div className="iso-grid absolute inset-0" aria-hidden="true" />
 
-      <div
-        aria-hidden="true"
-        className="absolute right-0 top-0 z-5"
-        style={{ width: 0, height: 0, borderTop: "64px solid var(--color-crimson)", borderLeft: "64px solid transparent" }}
-      />
+        <div className="relative z-1 mx-auto grid min-h-svh w-full max-w-7xl content-center items-center gap-10 px-4 py-24 sm:px-6 lg:grid-cols-2 lg:gap-0 lg:px-8">
+          <h1 className="sr-only">ICPEP.SE PUP MANILA</h1>
 
-      <div className="relative z-1 mx-auto grid min-h-[85vh] w-full max-w-7xl items-center gap-12 px-4 pt-12 pb-24 sm:px-6 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:gap-20 lg:px-8">
-        <div className="flex flex-col items-start gap-8">
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="inline-block h-2.5 w-2.5 bg-light-orange" aria-hidden="true" />
-            <span className="font-mono text-label uppercase tracking-[0.14em] text-light-orange">
-              Student Edition · A.Y. 2026–2027
-            </span>
+          <div data-hero="logo" className="flex justify-center">
+            <HeroVisual />
           </div>
 
-          <h1 className="max-w-[14ch] text-display font-bold leading-none tracking-tight text-white">
-            <span className="block">{P.heroHeadline}</span>
-            <span className="mt-2 block font-mono text-[0.86em] tracking-tight text-crimson">
-              {P.heroHeadlineAccent}
-            </span>
-          </h1>
-
-          <p className="max-w-[54ch] text-body text-off-white/80">{P.heroSubhead}</p>
-
-          <div className="flex flex-wrap items-center gap-4 sm:gap-7">
-            <a
-              href="#join"
-              className="inline-flex min-h-14 items-center bg-crimson px-7 font-mono text-label font-medium uppercase tracking-[0.12em] text-white transition hover:brightness-110"
+          <div className="grid gap-6 lg:pl-12">
+            <p
+              data-hero="name"
+              aria-hidden="true"
+              className="text-title font-bold tracking-tight text-white group-data-[animated=true]:[grid-area:1/1]"
             >
-              [[ Join the Discord ]]
-            </a>
-            <a
-              href="#projects"
-              className="inline-flex min-h-11 items-center border-b border-dashed border-light-orange font-mono text-label uppercase tracking-[0.12em] text-off-white transition-colors hover:text-light-orange"
+              ICPEP.SE PUP MANILA
+            </p>
+            <p
+              data-hero="phrase"
+              className="max-w-[26ch] self-center text-subheader text-off-white group-data-[animated=true]:[grid-area:1/1]"
             >
-              See what we build →
-            </a>
+              {PLACEHOLDER_COPY.heroPhrase}
+            </p>
           </div>
         </div>
-
-        <HeroVisual />
       </div>
-
-      <div className="relative z-1 mx-auto max-w-7xl px-4 pb-10 sm:px-6 lg:px-8">
-        <HeroMetadata />
-      </div>
-    </section>
+    </HeroScroll>
   );
 }

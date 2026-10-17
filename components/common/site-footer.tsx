@@ -117,7 +117,7 @@ export async function SiteFooter() {
         </div>
 
         <div aria-hidden="true" className="mt-16 overflow-hidden">
-          <div className="font-mono text-[clamp(2.375rem,10.6vw,9.5rem)] font-bold leading-none tracking-tight text-transparent [-webkit-text-stroke:1.5px_rgba(249,233,231,0.4)]">
+          <div className="font-mono text-[clamp(2.375rem,10.6vw,9.5rem)] font-bold leading-none tracking-tight text-transparent [-webkit-text-stroke:3px_rgba(249,233,231,0.4)]">
             ICPEP SE
           </div>
         </div>

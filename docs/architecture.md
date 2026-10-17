@@ -8,6 +8,7 @@
 | React | 19.3.0 | React Compiler enabled |
 | Tailwind | v4 | Configured **in CSS**, via `@theme` — there is no `tailwind.config.js` |
 | GSAP | 3.15 | Core only, plus `@gsap/react` 2.1.2. No plugins |
+| Lenis | 1.3 | Smooth scrolling over the native scroll; off under reduced motion — see [`brand/motion.md`](brand/motion.md) |
 | TypeScript | 5 | `strict` |
 | Fonts | `next/font` | **IBM Plex Sans + Mono**, mapped onto `--font-sans` / `--font-mono` — see [`brand/typography.md`](brand/typography.md) |
 
@@ -30,15 +31,14 @@ app/
   globals.css         The design system: @theme tokens (colour, motion, type), :root, body, .bracket, the whole intro
 components/
   common/
-    site-header.tsx   Masthead: wordmark
+    site-header.tsx   Masthead: full-width wordmark that shrinks on scroll and becomes the mono logo. "use client"
     site-footer.tsx   Mark, the file listing, the copyright bar. Reads the year behind "use cache"
     page-intro.tsx    The brand splash. "use client"
+    smooth-scroll.tsx Starts Lenis, unless reduced motion. "use client"
   ui/
     devices.tsx       Label, Marker, Rule — the design-language primitives
     status-chip.tsx   The header's clock. "use client"
     manila-clock.tsx  Live Manila clock (seconds) for hero/footer
-hooks/
-  use-scrolled.ts     Scroll state for the topbar
 lib/
   sections.ts         Page order. The single source of markers and filename labels — JSX-free
   placeholders.ts     Every lorem string on the site, in one place — delete when real copy lands
@@ -47,7 +47,8 @@ lib/
   intro-timeline.ts   Its timings and shuffle maths — JSX-free, so `node --test` can import it
   intro-timeline.test.ts
 sections/
-  hero/hero.tsx       Statement, equation band, glow mark. Holds the page's only <h1>
+  hero/hero.tsx       Glow mark, name and phrase. Holds the page's only <h1> (visually hidden)
+  hero/components/hero-scroll.tsx  The pinned scroll sequence. "use client"
   about/about.tsx     Marker 01 / about.md, the deck's vision statement, the mark
   events/events.tsx
   builds/builds.tsx

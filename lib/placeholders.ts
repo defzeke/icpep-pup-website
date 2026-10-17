@@ -1,9 +1,6 @@
 export const PLACEHOLDER_COPY = {
-  heroHeadline: "Where silicon meets",
-  heroHeadlineAccent: "SYNTAX.",
-  heroSubhead:
-    "The student home of Computer Engineering at PUP Manila — where the hardware you can hold and the logic you can't are planned, built and shipped as one system.",
   heroStatus: "[Recruiting open]",
+  heroPhrase: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
   aboutBody:
     "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa.",
   mission: "[Your mission statement — what the chapter commits to doing for its members, every semester.]",

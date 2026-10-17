@@ -46,7 +46,8 @@ accessibility, or anything the user asked for.
    pulsing, no parallax. Everything the page animates is bounded by
    [`brand/motion.md`](brand/motion.md): durations come from its tokens, and its **banned
    list** — scroll-jacking, parallax, auto-advancing carousels, animating a focus indicator —
-   is part of this contract, not a preference.
+   is part of this contract, not a preference. Smooth scrolling (Lenis) and the hero's pinned
+   sequence are the two sanctioned exceptions, both off under `reduce`.
 
 ## Design
 

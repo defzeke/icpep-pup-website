@@ -60,6 +60,9 @@ Concretely:
 | Card media hover | Scale within a fixed, `overflow-hidden` frame | `fast` | not built |
 | Status chip | The clock updating. Text replacement, no transition | 0 | **built** |
 | Page scroll, header only | The wordmark shrinks from full width into the top-left corner, its scale a function of scroll position ([header-nav](../sections/header-nav/README.md#7-interaction-and-states)). Under reduced motion it snaps between the two sizes | scroll-linked | **built** |
+| Header wordmark reaches the corner | Light leaving one form and arriving in another: the wordmark blurs out as `icpep-mono.png` blurs in, rising from 90% scale; reversed on the way back | `slow` | **built** |
+| Any scroll input | **Smooth scrolling** — [Lenis](https://lenis.darkroom.engineering/) eases the native scroll position toward its target (`lerp: 0.08`), and handles in-page anchors. Touch keeps native scrolling. Off under reduced motion (`components/common/smooth-scroll.tsx`) | scroll-linked | **built** |
+| Scrolling through the hero | **The one pinned sequence**: the stage holds still while the mark zooms, slides left and hands over to the name, then the phrase ([hero](../sections/hero/README.md#3-layout)) | scroll-linked | **built** |
 
 The **viewport reveal is the one entry still unbuilt.** It needs a client component that adds the
 hidden starting state after hydration, and the first paint would then flash the content visible
@@ -77,7 +80,7 @@ costs no plugin and no extra bundle.
 
 | | Why |
 | --- | --- |
-| **Scroll-jacking** — intercepting the wheel, or animating scroll position | It breaks the browser's own scroll behaviour and is disorienting with a trackpad, a keyboard or a screen reader. |
+| **Scroll-jacking** — redirecting, snapping or locking the scroll | It breaks the browser's own scroll behaviour and is disorienting with a trackpad, a keyboard or a screen reader. **Changed 2026-10-18:** easing the native scroll toward where the visitor sent it (Lenis, above) is allowed, because the destination stays the visitor's; snapping to points, and pinning anywhere but the hero, are not. |
 | **Parallax** | The most expensive motion to get right and the easiest to get wrong, on a site whose motion has never been reviewed in a browser. |
 | **Animated marquees** | WCAG 2.2.2 — see [design-language.md](design-language.md#the-marquee-and-why-it-is-not-one). |
 | **Auto-advancing carousels** | Already a hard rule in [partners-sponsors](../sections/partners-sponsors/README.md). Extended here to everything. |

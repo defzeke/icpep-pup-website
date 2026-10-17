@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import { PageIntro } from "@/components/common/page-intro";
+import { SmoothScroll } from "@/components/common/smooth-scroll";
 import "./globals.css";
 
 const plexSans = IBM_Plex_Sans({
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body className="min-h-full flex flex-col">
         <PageIntro />
+        <SmoothScroll />
         {children}
       </body>
     </html>

@@ -1,10 +1,11 @@
 # Header / Navigation
 
-> **Status — draft 4.** The topbar is a text wordmark (`ICPEP.SE PUP`) that opens at the full
-> container width and shrinks into the top-left corner as the visitor scrolls, after the
-> [neutomni](https://neutomni.com/) masthead (see [moodboard.md](../../brand/moodboard.md)). The
-> logo is text, not a raster; the status chip and the `index.html` label are gone (the clock
-> lives in the hero and footer). See `components/site-header.tsx`.
+> **Status — draft 5.** The topbar is a text wordmark (`ICPEP.SE PUP MANILA`, IBM Plex Sans Bold) that
+> opens at the full container width, shrinks into the top-left corner as the visitor scrolls,
+> then blurs into the `icpep-mono.png` logo — after the [neutomni](https://neutomni.com/)
+> masthead (see [moodboard.md](../../brand/moodboard.md)). The status chip and the `index.html`
+> label are gone (the clock lives in the hero and footer). See
+> `components/common/site-header.tsx`.
 >
 > **Source status.** The deck does not document the header as a section, but it *shows* one
 > on every page: the wordmark `ICPEP SE – PUP MANILA`, the four links `Home`, `About Us`,
@@ -25,19 +26,25 @@ full lockup at equal size.
 ## 3. Layout
 
 - **A wordmark that fills the container, then shrinks into the corner.** The bar carries a single
-  text wordmark, `ICPEP.SE PUP` (IBM Plex Mono, bold, `--color-off-white`), and it is a link to
-  `#top`. At the top of the page it spans the full `max-w-7xl` content width — sized by CSS
-  alone, `100cqw / 7.2`, because Plex Mono advances every glyph 0.6em and the wordmark is twelve
-  glyphs. As the visitor scrolls it scales down from its top-left corner to 20 px, **linked to
-  scroll position** rather than played as a timed transition, and lands vertically centred in a
-  64 px bar. Changing the wordmark's text, font or letter-spacing breaks the fill.
+  text wordmark, `ICPEP.SE PUP MANILA`, set at the Display level's face — **IBM Plex Sans Bold**,
+  `tracking-tight`, `--color-off-white` — and it is a link to `#top`. At the top of the page it
+  spans the full viewport width, sized by CSS alone: `100cqw / 10.421`. 10.896em is
+  the sum of the nineteen glyphs' Plex Sans Bold advances (measured from the font's `hmtx`),
+  less 19 × 0.025em of tracking; kerning is switched off so the sum is exact. **Changing the
+  text, the font, the weight or the tracking breaks the fill** — re-measure. Its line height is
+  0.8, which hugs the caps (cap height 0.698em). As the visitor scrolls it scales down from its
+  top-left corner to 24 px, **linked to scroll position** rather than played as a timed
+  transition, landing vertically centred in an 88 px bar.
+- **Then it becomes the logo.** *(Removed 2026-10-18 — the compact `icpep-mono.png` logo no longer
+  appears.)* Previously, when the shrink completed, the wordmark blurred out while `icpep-mono.png`
+  blurred in at the same corner. The compact bar height (88 px) is retained.
 - **The shrink never overlaps the page.** An in-flow spacer at the top of the page (the `#top`
-  target) reserves the full-size wordmark plus a 22 px inset above and below. The shrink runs
+  target) reserves the full-size wordmark plus a 34 px inset above and below. The shrink runs
   over exactly the distance that spacer takes to scroll under the bar, so the content's top edge
-  stays 22 px below the wordmark the whole way.
-- **The compact bar.** Once the shrink completes, the 64 px bar gains a blurred, translucent
-  Obsidian background (`backdrop-blur-md`, `bg-obsidian/80`) plus a `--color-carbon` hairline,
-  at `--duration-base`. Above that point it is transparent.
+  stays 34 px below the wordmark the whole way.
+- **The compact bar.** At the same moment, the bar gains a blurred, translucent Obsidian
+  background (`backdrop-blur-md`, `bg-obsidian/80`) plus a `--color-carbon` hairline, at
+  `--duration-base`. Above that point it is transparent.
 - **No JS:** the header is `position: absolute` until hydration and `fixed` after, so without a
   script the full-size wordmark scrolls away with the page instead of covering it.
 - **No collapse, no menu icon.** There is no nav, no status chip and no filename label in the
@@ -54,7 +61,8 @@ full lockup at equal size.
 
 | Field | Value | Source |
 | --- | --- | --- |
-| Wordmark (text) | `ICPEP.SE PUP` (single colour, IBM Plex Mono bold) | Proposed (draft 3 v2) |
+| Wordmark (text) | `ICPEP.SE PUP MANILA` (single colour, IBM Plex Sans Bold) | Proposed (draft 5) |
+| Compact logo | *(none — removed 2026-10-18)* | — |
 | Link set | *(none — the bar carries no nav)* | — |
 | Status word | *(none — dropped in draft 3)* | — |
 | Clock | *(none in the bar — lives in hero + footer)* | — |
@@ -67,9 +75,8 @@ either out of date or intended for an earlier one-page design. **This needs a de
 the header is built.**
 
 **The motif stays out of the bar.** The deck prints `PLAN BUILD DEPLOY REPEAT` in its own page
-furniture, which made the header look like its home. It is not: the motif appears **once per
-page**, in the [hero](../hero/README.md)'s equation band, and the
-[process](../process/README.md) section explains the same four words as a sequence. Putting it
+furniture, which made the header look like its home. It is not: the motif appeared in the hero's equation band (removed 2026-10-18); it now lives in
+the [process](../process/README.md) section, which explains the same four words as a sequence. Putting it
 in the bar as well would be three readings of one motif on one page.
 
 Its **reading order is still unresolved** — the deck's extracted text returns
@@ -95,7 +102,7 @@ the filenames instead, where the list is a map of the page rather than a control
 | Links (rest) | `--color-off-white` — 17.31:1 on Obsidian |
 | Links (hover/active) | `--color-light-orange` — 7.81:1 |
 | Active-section indicator | `--color-crimson` (3.55:1 — **indicator only, never label text**) |
-| Wordmark | Text, IBM Plex Mono bold, single colour (`--color-off-white`) |
+| Wordmark | Text, IBM Plex Sans Bold, `tracking-tight`, single colour (`--color-off-white`) |
 | Link type | Medium (500), uppercase, letter-spaced, small label size |
 | Bar (rest) | transparent |
 | Bar (scrolled) | `--color-obsidian` at 80% + `backdrop-blur-md` + `--color-carbon` hairline |
@@ -111,12 +118,13 @@ Uppercase links at a small size are consistent with the deck's metadata style
 
 | Asset | Path | Notes |
 | --- | --- | --- |
-| Wordmark | *(none — text)* | `ICPEP.SE PUP`, IBM Plex Mono bold |
+| Wordmark | *(none — text)* | `ICPEP.SE PUP MANILA`, IBM Plex Sans Bold |
+| Compact logo | *(none — removed 2026-10-18)* | — |
 | Menu icon | *(none — no collapse)* | Nav fits at 320 px |
 
-Alt text for the wordmark comes from
-[../../assets/inventory.md](../../assets/inventory.md). If the header logo is the only
-content of the link to `/`, that link still needs an accessible name.
+The logo is the only content of its link, so the image is `alt=""` and the **link** carries the
+name `ICpEP SE – PUP Manila` from [../../assets/inventory.md](../../assets/inventory.md). The
+wordmark link's name is its own text.
 
 ## 7. Interaction and states
 
@@ -128,15 +136,17 @@ content of the link to `/`, that link still needs an accessible name.
   indicator and never remove the outline.
 - **Mobile menu:** opens a panel; it must trap focus while open, close on `Escape`, and
   return focus to the button.
-- **Scroll:** the wordmark's scale is a function of `scrollY`, from 1 at the top to `20 px / its
+- **Scroll:** the wordmark's scale is a function of `scrollY`, from 1 at the top to `24 px / its
   full size` once the spacer has scrolled under the bar (§3) — scrolling back up grows it again.
   It is written to `transform` once per animation frame, never through React state. This is the
   one scroll-linked motion on the page: it moves only while the visitor scrolls, and never moves
   the scroll position itself, so it is neither scroll-jacking nor parallax
-  ([motion.md](../../brand/motion.md#not-allowed)). The bar's background then fades in at
-  `--duration-base`.
-- **Reduced motion:** there is no intermediate scale. The wordmark is full size at `scrollY = 0`
-  and compact at any other position, and the bar's background appears without a transition.
+  ([motion.md](../../brand/motion.md#not-allowed)).
+- **Wordmark → logo:** *(removed 2026-10-18 — the compact logo no longer appears.)* The
+  `data-compact` flag still toggles the bar's background.
+- **Reduced motion:** there is no intermediate scale and no blur. The wordmark is full size at
+  `scrollY = 0`, the logo replaces it at any other position, and the bar's background appears,
+  all without a transition.
 
 ## 8. Accessibility
 
@@ -162,13 +172,19 @@ content of the link to `/`, that link still needs an accessible name.
       link is visible and reachable by keyboard without opening anything; a collapse is
       deferred until the link set is settled. See §3.
 - [ ] At the top of the page the wordmark spans the content width and the bar is transparent.
+- [ ] At 1440 px and at 375 px, the wordmark's right edge meets the content edge without
+      overflowing it.
 - [ ] Scrolling shrinks the wordmark continuously into the top-left corner; once the hero reaches
-      the bar it is 20 px tall, centred in a 64 px bar with a blurred background and a hairline.
+      the bar it blurs out and `icpep-mono.png` blurs in, 70 px tall in an 88 px bar with a
+      blurred background and a hairline.
+- [ ] Scrolling back to the top reverses both.
 - [ ] At no scroll position does the wordmark overlap the content beneath it.
-- [ ] Clicking the wordmark from anywhere on the page returns to the top.
-- [ ] With JS disabled, the full-size wordmark scrolls away with the page rather than staying fixed.
-- [ ] With `prefers-reduced-motion: reduce`, the wordmark snaps between its two sizes and nothing
-      animates.
+- [ ] Clicking the wordmark or the logo from anywhere on the page returns to the top.
+- [ ] Tabbing reaches exactly one of the two header links at any scroll position.
+- [ ] With JS disabled, the full-size wordmark scrolls away with the page rather than staying fixed,
+      and the logo never appears.
+- [ ] With `prefers-reduced-motion: reduce`, the wordmark and the logo swap without any scaling,
+      blur or fade.
 - [ ] The header is not announced as a heading by a screen reader.
 - [ ] With `prefers-reduced-motion: reduce`, the hover underline does not animate.
 - [ ] The clock does not produce a hydration mismatch or a React warning.
@@ -187,5 +203,11 @@ content of the link to `/`, that link still needs an accessible name.
 4. ~~Sticky or static header?~~ **Answered — fixed**, with a scroll-linked shrink (draft 4),
    recorded in [motion.md](../../brand/motion.md#the-vocabulary) as the page's only
    scroll-linked motion.
+7. **Is a Plex Sans wordmark the right call against the mono's identity?** Draft 3 set it in Plex
+   Mono; draft 5 moved it to the Sans Bold heading face, since at this size it is the page's
+   display type and [typography.md](../../brand/typography.md#mono--metadata-only) keeps Mono to
+   metadata.
+8. **Does 88 px of compact bar cost too much screen?** It is set by the logo's 96 px legibility
+   floor. The alternative is `icpep-mark.png` (no trace wordmark, 32 px minimum) in a 64 px bar.
 5. Is there an **icon set**? The brand supplies none; the bar avoids icons entirely (text only).
 6. **Status word** — dropped from the bar in draft 3; the clock lives in the hero and footer.

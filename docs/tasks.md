@@ -32,7 +32,6 @@ Each of these is a section whose required content does not exist. None can be pa
 | Section | Missing |
 | --- | --- |
 | CTA / Join Us | The join destination. Its content model says the CTA is required, not data-driven — [`sections/cta-join-us/README.md`](sections/cta-join-us/README.md) |
-| Hero call to action | The same destination. The hero ships without it rather than with a link that goes nowhere |
 | Events | An event source or list — [`sections/events/README.md`](sections/events/README.md) |
 | Projects | Project entries, and at least one image — [`sections/projects/README.md`](sections/projects/README.md) |
 | Executives & Advisers | A roster and portraits. `public/officers/` is empty |
@@ -44,7 +43,7 @@ Each of these is a section whose required content does not exist. None can be pa
 
 | | Why |
 | --- | --- |
-| Get a headline for the hero | The site's most important copy, and the deck supplies none — [`sections/hero/README.md`](sections/hero/README.md) |
+| Watch the header shrink in a browser | The wordmark's fill, the shrink and the blur into the logo are measured from the font file and arithmetic, not observed — [`sections/header-nav/README.md`](sections/header-nav/README.md) |
 | Write the four process descriptions | The section is four names and placeholder copy — [`sections/process/README.md`](sections/process/README.md) |
 | Decide the join mechanism | Unblocks two sections at once — [`sections/cta-join-us/README.md`](sections/cta-join-us/README.md) |
 | See the built page in a browser | Nothing on this page has been looked at. The clocks, the clamps and the mark's bounding box are all arithmetic — [`skills.md`](skills.md) |
@@ -57,7 +56,8 @@ Each of these is a section whose required content does not exist. None can be pa
 ## Needs a decision
 
 - **The join destination.** Google Form, Discord, an on-site form, a Facebook group? It is the one
-  field blocking the site's only call to action, and therefore the hero as well.
+  field blocking the site's only call to action. (The hero no longer has one — removed
+  2026-10-18.)
   [`sections/cta-join-us/README.md`](sections/cta-join-us/README.md).
 - **Deck nav vs site sections.** The deck's `Home · About Us · Service · Contact` does not match
   the twelve sections these docs specify. The footer's file listing — every section, in page

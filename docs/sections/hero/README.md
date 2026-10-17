@@ -16,15 +16,36 @@ Next is [about](../about/README.md).
 
 ## 3. Layout
 
-- Full-viewport-height or near it (`min-h-[85vh]` proposal) so the entry reads as a moment.
-- **Three bands, stacked:** the statement, the **equation band**, then the CTA. The equation
-  band is what stops this being a headline sitting over a picture.
-- **Two arrangements, one breakpoint:**
-  - ≥ `lg`: split — statement and equation left, glow mark right.
-  - < `lg`: stacked — statement, equation, mark, CTA.
+- Full-viewport-height (`min-h-screen`) so the entry reads as a moment and the next section
+  does not peek.
+- **The header's full-width wordmark is the statement.** Following the
+  [neutomni](https://neutomni.com/) masthead, the org's name is the page's largest type and lives
+  in the [header](../header-nav/README.md); the hero beneath it carries no visible headline,
+  subhead or buttons (removed by decision, 2026-10-18).
+- **A pinned scroll sequence** (2026-10-18, after neutomni's pinned showreel and portfolio).
+  The section is 400vh tall; a sticky, viewport-high stage holds still for the first 300vh of
+  scroll while one GSAP timeline plays against scroll position, then the page scrolls on
+  normally. Over that distance:
+
+  | Scroll | What happens |
+  | --- | --- |
+  | 0–25% | The glow mark, centred, zooms to 1.3×; the two layer labels fade out |
+  | 30–55% | The mark slides left into its column and settles back to 1× |
+  | 42–57% | `ICPEP.SE PUP MANILA` fades in on the right |
+  | 68–78% | The name fades out, rising |
+  | 74–86% | The phrase fades in from a 10px blur |
+  | 86–100% | Hold, then the stage releases |
+
+  Below `lg` the same sequence runs vertically: the mark rises from the centre and the text
+  appears beneath it.
+- **The resting layout is the finished one.** With no JS or with reduced motion there is no pin
+  and no sequence: the section is one viewport tall, the mark sits left (above, below `lg`) with
+  its labels, and the name and phrase are stacked on the right. JS opts into the animated layout
+  by setting `data-animated` on the section; reverting the timeline removes it.
 - **Pillars:** *Atmospheric* (obsidian base, glow halo, emitted light), *Isometric Geometry*
-  (the mark's 30° stack) and *Algorithmic* (the equation band and its labels). All three — which
-  is why this is the one section allowed the top of the Display clamp.
+  (the mark's 30° stack) and *Algorithmic* (its labels). All three — which
+  is why this is the one section allowed the top of the Display clamp. (The equation band was
+  removed 2026-10-18.)
 - **The hero takes no filename label and no index marker.** Every other section is *a part of*
   the page and names itself as one; the hero *is* the page. It is also the only section that
   does not sit under a `.md`/`.json`/`.ts` name, because there is nothing above it to file it
@@ -36,21 +57,21 @@ Next is [about](../about/README.md).
 
 | Field | Value | Source |
 | --- | --- | --- |
-| Headline | `TBC` | **Not in the deck** — the cover's word is the deck's own title |
-| Subhead | Candidate: the vision statement | Deck page 2, but that is the About section's copy |
-| Equation band | `PLAN → BUILD → DEPLOY → ↺` | Deck — the page-furniture motif |
-| Primary CTA label | `TBC` — **not built** | The destination is unresolved; see below |
-| Secondary CTA label | `TBC` — **not built** | Not in the deck |
+| `<h1>` | `ICPEP.SE PUP MANILA`, **visually hidden** | The org's name |
+| Visible name | `ICPEP.SE PUP MANILA`, Title level, Bold, `aria-hidden` (the `<h1>` already says it) | The org's name |
+| Phrase | Placeholder — `heroPhrase` in [`lib/placeholders.ts`](../../../lib/placeholders.ts) | `TBC` |
+| Season line | *(none — removed 2026-10-18)* | — |
+| Visible headline / subhead | *(none — removed 2026-10-18)* | — |
+| Equation band | *(none — removed 2026-10-18)* | — |
+| Primary / secondary CTA | *(none — removed 2026-10-18)* | The join destination is still unresolved |
 
-**Both the headline and the subhead currently render as placeholder text**, fenced in
-[`lib/placeholders.ts`](../../../lib/placeholders.ts) and tracked in
-[tasks.md](../../tasks.md). They are lorem, not invented brand copy — [`rules.md`](../../rules.md)
-§2 forbids the latter.
+**The page's one `<h1>` stays, hidden.** With the visible headline gone, the hero would have no
+heading and the page no `<h1>`, so screen-reader users would lose the page's title. The name is
+not invented copy: it is the org's own, as in the alt text in
+[inventory.md](../../assets/inventory.md).
 
-**The hero has no call to action yet.** Its one required field is a destination
-([cta-join-us](../cta-join-us/README.md) §10.1 — Google Form, Discord, or an on-site form?), and
-nothing in the repo knows it. A button that scrolls nowhere is a defect, so the action is
-deferred rather than faked; the layout reserves its place at the end of the left column.
+**The hero has no call to action.** It was removed with the headline; the page's ask lives in
+[cta-join-us](../cta-join-us/README.md), whose destination is still undecided (§10.1 there).
 
 The vision statement — *"To establish a definitive, high-precision visual identity that
 embodies the true duality of Computer Engineering…"* — is an **internal** statement about
@@ -78,15 +99,12 @@ arrow on a three-step set is unresolved — see
 | Element | Token |
 | --- | --- |
 | Background | `--color-obsidian` |
-| Headline | `--color-white` (20.38:1) |
-| Subhead | `--color-off-white` (17.31:1) |
-| Accent / rule | `--color-bright-orange` (6.13:1) |
-| Equation band | `--color-light-orange` (7.81:1) |
-| Headline type | Display level — the deck's 120–180 pt @2048, clamped |
-| Subhead type | Subheader level |
-| Equation band type | Subheader level, **Mono**, uppercase, letter-spaced |
 
-The hero is the **one** section allowed Display type at the top of the clamp range.
+| Accent / rule | `--color-bright-orange` (6.13:1) |
+
+
+The hero sets no Display type of its own any more: the page's display type is the header's
+full-width wordmark directly above it.
 
 ## 6. Required assets
 
@@ -107,16 +125,18 @@ Within the page itself, use it **once** — here. No other section takes it.
 
 ## 7. Interaction and states
 
-- CTA *(not built)*: its proposed treatment is a solid bright-orange fill with Obsidian text
-  (6.13:1 inverse), or outlined, hovering to `--color-light-orange`. The built
-  [bracket action](../cta-join-us/README.md) uses that fill; the hero should not repeat it
-  verbatim when it lands.
+- No interactive elements: the hero carries no links or buttons.
+- **Scroll sequence** (§3): `sections/hero/components/hero-scroll.tsx`. GSAP core only, in a
+  `gsap.matchMedia` for `prefers-reduced-motion: no-preference`. Progress is the section's
+  scrolled fraction, read on `scroll`; it is not ScrollTrigger. The logo's centring offset is
+  measured from `offsetLeft`/`offsetTop`, so transforms never feed back into it, and the timeline
+  is rebuilt when the viewport *width* changes (never the height, so a mobile URL bar can't
+  rebuild it mid-scroll).
 - Glow may pulse subtly on load. Any motion needs a `prefers-reduced-motion` fallback that
   renders the static halo.
 - If the hero image is the LCP element: mark it `priority` in `next/image` and give explicit
   width/height to prevent layout shift.
-- The equation band may rise with the rest of the hero on first view — see
-  [motion.md](../../brand/motion.md). It carries no interaction.
+- (The equation band was removed 2026-10-18.)
 - **Intro hand-off.** On a first visit, the intro's curtain lifts off this section. Mark the
   elements that should rise with it using the `data-intro-reveal` attribute; the hook is
   documented in [`intro.md`](../../intro.md). Nothing is marked yet. The attribute is
@@ -125,35 +145,36 @@ Within the page itself, use it **once** — here. No other section takes it.
 
 ## 8. Accessibility
 
-- Exactly one `<h1>` on the page, and it belongs here.
-- The CTA must be a real `<a>` or `<button>`, not a `div` with a click handler.
-- Body/subhead text on Obsidian must use white/off-white — never maroon.
+- Exactly one `<h1>` on the page, and it belongs here — visually hidden (`sr-only`), not removed.
+- Any text on Obsidian must use white/off-white or the orange family — never maroon.
 - If the glow pulses, the animation must stop under `prefers-reduced-motion: reduce`.
-- **The equation band is not a heading.** Mark it up as a `<p>` or a `<ul>`, not as an `<h2>` —
-  it is a statement, and a screen reader reading it as a section title would mis-describe the
-  page. The arrows are decoration; the words carry the meaning, so `aria-hidden` belongs on the
-  arrow glyphs only, and the band must still read correctly as
-  "Plan, build, deploy, repeat".
+- (The equation band was removed 2026-10-18.)
 
 ## 9. Acceptance criteria
 
-- [ ] Exactly one `<h1>` on the page, inside the hero.
-- [ ] Headline remains legible at 320 px width without horizontal scroll.
-- [ ] The glow mark never overlaps the headline text box.
-- [ ] ~~The CTA is keyboard-focusable with a visible focus ring.~~ Not applicable while the hero
-      has no CTA — see §4. Reinstated with the action.
+- [ ] Exactly one `<h1>` on the page, inside the hero, reading "ICPEP.SE PUP MANILA" to a
+      screen reader and invisible on screen.
+- [ ] The page does not scroll past the hero until the sequence in §3 has played; scrolling back
+      up plays it in reverse.
+- [ ] At 1440 px the mark ends in the left half and the name and phrase in the right half, never
+      overlapping.
+- [ ] With reduced motion or no JS, the hero is one viewport tall, nothing moves, and the name
+      and the phrase are both readable.
+- [ ] No horizontal scroll at 320 px.
 - [ ] With reduced motion, no pulsing occurs and the halo renders statically. *(No pulse is
       built; the halo is static at every setting.)*
 - [ ] Hero image is the LCP candidate and uses `priority` with explicit dimensions.
-- [ ] The equation band reads in the right order with the arrow glyphs hidden.
+- [ ] (The equation band was removed 2026-10-18.)
 - [ ] The motif appears once on the page, not also in the header.
 
 ## 10. Open questions
 
-1. **What is the headline?** This is the site's single most important piece of copy and the
-   deck supplies nothing. Who writes it?
-2. Is the hero a **single screen with a CTA**, or a scroll-triggered sequence?
-3. Which **CTA** does the hero promote — join, events, or projects?
+1. ~~**What is the headline?**~~ **Answered — none.** The header's wordmark is the statement
+   (2026-10-18). Revisit if a tagline is ever written, the way neutomni pairs its wordmark with
+   one.
+2. ~~Is the hero a **single screen**, or a scroll-triggered sequence?~~ **Answered — a pinned
+   sequence** (§3). Open: is 300vh of pinned scroll too long for a visitor who just wants the page?
+3. ~~Which **CTA** does the hero promote?~~ **Answered — none**; the ask is the CTA section's.
 4. Should the hero carry the `26-27` season chip as text (to survive a logo re-export)?
 5. Is the **animated** version of the glow mark planned? The deck references motion studio
    aesthetics but supplies only a still.
