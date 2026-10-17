@@ -33,7 +33,6 @@ Each of these is a section whose required content does not exist. None can be pa
 | --- | --- |
 | CTA / Join Us | The join destination. Its content model says the CTA is required, not data-driven — [`sections/cta-join-us/README.md`](sections/cta-join-us/README.md) |
 | Events | An event source or list — [`sections/events/README.md`](sections/events/README.md) |
-| Projects | Project entries, and at least one image — [`sections/projects/README.md`](sections/projects/README.md) |
 | Executives & Advisers | A roster and portraits. `public/officers/` is empty |
 | Gallery | Photographs |
 | Partners & Sponsors | Partner names and logos |

@@ -15,6 +15,7 @@ function sequence(section: HTMLElement) {
     const labels = q("[data-hero=label]");
     const [name] = q("[data-hero=name]");
     const [phrase] = q("[data-hero=phrase]");
+    const wash = q("[data-hero=wash]");
     if (!logo || !visual || !name || !phrase) return;
 
     section.dataset.animated = "true";
@@ -29,6 +30,7 @@ function sequence(section: HTMLElement) {
     tl.to(visual, { scale: 1.3, duration: 0.25 }, 0)
       .to(labels, { autoAlpha: 0, duration: 0.15 }, 0.05)
       .fromTo(logo, { x: dx, y: dy }, { x: 0, y: 0, duration: 0.25 }, 0.3)
+      .fromTo(wash, { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power1.inOut" }, 0.28)
       .to(visual, { scale: 1, duration: 0.25 }, 0.3)
       .fromTo(name, { opacity: 0, x: 48 }, { opacity: 1, x: 0, duration: 0.15 }, 0.42)
       .to(name, { opacity: 0, y: -24, duration: 0.1 }, 0.68)
@@ -44,6 +46,8 @@ function sequence(section: HTMLElement) {
       const span = section.offsetHeight - window.innerHeight;
       const top = -section.getBoundingClientRect().top;
       tl.progress(span > 0 ? gsap.utils.clamp(0, 1, top / span) : 0);
+      if (top > 0) section.dataset.scrolled = "true";
+      else delete section.dataset.scrolled;
     };
     update();
     window.addEventListener("scroll", update, { passive: true });

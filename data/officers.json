@@ -1,0 +1,20 @@
+[
+  { "photo": "president.PNG", "name": "", "position": "", "group": "executive" },
+  { "photo": "vicepresident.jpg", "name": "", "position": "", "group": "executive" },
+  { "photo": "vp4internal.png", "name": "", "position": "", "group": "executive" },
+  { "photo": "vp4tech.jpg", "name": "", "position": "", "group": "executive" },
+  { "photo": "vp4ops.jpg", "name": "", "position": "", "group": "executive" },
+  { "photo": "vp4rel.PNG", "name": "", "position": "", "group": "executive" },
+  { "photo": "vp4marketing.jpeg", "name": "", "position": "", "group": "executive" },
+  { "photo": "vp4graphics.png", "name": "", "position": "", "group": "executive" },
+  { "photo": "secretary.png", "name": "", "position": "", "group": "executive" },
+  { "photo": "treasurer.jpg", "name": "", "position": "", "group": "executive" },
+  { "photo": "auditor.jpg", "name": "", "position": "", "group": "executive" },
+  { "photo": "avp4internal.JPG", "name": "", "position": "", "group": "executive" },
+  { "photo": "avp4tech.PNG", "name": "", "position": "", "group": "executive" },
+  { "photo": "avp4ops.png", "name": "", "position": "", "group": "executive" },
+  { "photo": "avp4rel.PNG", "name": "", "position": "", "group": "executive" },
+  { "photo": "avp4marketing.jpg", "name": "", "position": "", "group": "executive" },
+  { "photo": "avp4graphics.jpg", "name": "", "position": "", "group": "executive" },
+  { "photo": "adviser.jpg", "name": "", "position": "", "group": "adviser" }
+]

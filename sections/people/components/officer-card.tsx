@@ -1,18 +1,31 @@
-export function OfficerCard({ index }: { index: number }) {
+import Image from "next/image";
+
+export type Officer = {
+  photo: string;
+  name: string;
+  position: string;
+  group: string;
+};
+
+export function OfficerCard({ officer }: { officer: Officer }) {
+  const name = officer.name || "[Name]";
+  const position = officer.position || "[Position]";
+
   return (
     <article className="flex flex-col gap-4">
-      <div className="hatch relative aspect-[4/5] border border-carbon p-3.5">
-        <span className="font-mono text-label uppercase tracking-[0.14em] text-off-white/60">
-          [Portrait]
-        </span>
-        <span className="absolute bottom-3.5 right-3.5 font-mono text-label tracking-[0.14em] text-light-orange">
-          EXE.{String(index + 1).padStart(2, "0")}
-        </span>
+      <div className="relative aspect-[4/5] overflow-hidden border border-carbon bg-obsidian">
+        <Image
+          src={`/officers/${officer.photo}`}
+          alt={officer.name ? `${officer.name}, ${officer.position}` : ""}
+          fill
+          sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+          className="object-cover object-top"
+        />
       </div>
       <div className="flex flex-col gap-1.5">
-        <span className="font-mono text-label font-bold text-white">ID // [Name]</span>
+        <span className="font-mono text-label font-bold text-white">{`ID // ${name}`}</span>
         <span className="font-mono text-label uppercase tracking-[0.12em] text-light-orange">
-          Role // [Position]
+          {`Role // ${position}`}
         </span>
       </div>
     </article>

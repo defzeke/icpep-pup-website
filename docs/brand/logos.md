@@ -21,7 +21,7 @@ and it is what the "Integrate" idea resolves to. Protect it.
 | `icpep-primary.png` | 820 × 820 | Full colour, star + `ICPEP SE PUP` trace wordmark + `26-27` chip | Light surfaces — the default lockup |
 | `icpep-mark.png` | 1024 × 1024 | Mark only: diamond stack + star, **no wordmark, no glow** | Avatars, favicons, tight spaces, app tiles |
 | `icpep-mono.png` | 753 × 753 | White knockout lockup. Opaque area is **22.5%** of the canvas and is near-uniformly white; the star and traces are **transparent negative space** | Dark surfaces (Obsidian / Carbon) |
-| `icpep-hero-glow.png` | 1024 × 1024 | Full colour lockup with **glow halo** and neon traces | The hero, and the [page intro](../intro.md) landing. Nowhere else |
+| `icpep-hero-glow.png` | 658 × 607 (tight crop, with alpha) | Full colour lockup with **glow halo** and neon traces | The hero, and the [page intro](../intro.md) landing. Nowhere else |
 | `icpep-lockup-obsidian.png` | 710 × 355 | Horizontal **white-on-black** lockup, already flattened onto an Obsidian background (opaque, no alpha) | Dark headers, social banners, Open Graph images |
 
 Notes:

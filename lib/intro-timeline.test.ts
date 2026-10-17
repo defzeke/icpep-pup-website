@@ -37,7 +37,7 @@ test("shuffleOrder never repeats, and never re-picks what is on screen", () => {
 
 test("the derived total still matches the ~3.1s that docs/intro.md documents", () => {
   const gaps = shuffleIntervals(T.shuffle).reduce((sum, gap) => sum + gap, 0);
-  const total = T.fadeIn + gaps + T.shuffle.crossfade + T.ignition + T.hold + T.gap + T.curtain;
+  const total = T.fadeIn + gaps + T.shuffle.crossfade + T.ignition + T.hold + T.outro;
 
   assert.equal(Number(total.toFixed(3)), 3.108, "the timeline moved but docs/intro.md still says 3.108s");
 });

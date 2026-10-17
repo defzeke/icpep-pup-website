@@ -1,5 +1,26 @@
 # Footer
 
+> **Status — draft 2 (2026-10-18).** `components/common/site-footer.tsx`:
+>
+> - **Removed:** the Navigate file listing, the Local clock column, and the written email
+>   address. The Connect icons stay, including the email icon, which still links to the same
+>   address.
+> - **Logo:** `icpep-lockup-obsidian.png` — the white lockup made for dark surfaces — cropped to
+>   its artwork (447 × 310 of 710 × 355, from 118, 22) and shown 112px tall, so its trace
+>   wordmark is ~161px wide. The earlier `icpep-mono.png` at `h-10` rendered its 22.5%-of-canvas
+>   artwork as an unreadable smear.
+> - **Revealed from behind the page,** after neutomni: `main` is `relative z-10` with an opaque
+>   Obsidian background and a soft shadow at its foot; the footer is `sticky bottom-0 z-0`, so it
+>   waits beneath the page and is uncovered as the page scrolls up off it. Only on viewports at
+>   least 720px tall — a footer taller than the screen would have its top permanently hidden.
+>   It is **never raised above the page**: an earlier `focus-within:z-20` left it covering the
+>   hero after "Back to top", because the clicked link kept focus. Instead,
+>   `components/common/footer-reveal.tsx` scrolls to the end of the page when anything in the
+>   footer gets **keyboard** focus (`:focus-visible`), uncovering it fully; mouse clicks are left
+>   alone.
+>
+> The file listing and its accessible-name rules described below are superseded.
+>
 > **Source status.** The deck shows a footer-adjacent chrome on its pages: the wordmark
 > `ICPEP SE – PUP MANILA` and the links `Home`, `About Us`, `Service`, `Contact`
 > (deck pages 2–3, marked `02`/`03`). It gives no footer spec. Everything below is a

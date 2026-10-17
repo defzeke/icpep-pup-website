@@ -11,10 +11,10 @@ section should feel restrained rather than promotional.
 
 ## 2. Placement and order
 
-Home page, after [gallery](../gallery/README.md). Before [faq](../faq/README.md) — proof, then
-the last questions.
+Home page, after [gallery](../gallery/README.md). Before
+[faq](../faq/README.md) when it is rendered, otherwise [cta-join-us](../cta-join-us/README.md).
 
-Partners / Sponsors is index marker **`07`**.
+Partners / Sponsors is index marker **`05`**.
 
 ## 3. Layout
 

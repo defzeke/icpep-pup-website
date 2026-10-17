@@ -4,11 +4,15 @@
 > **`Contact`** (deck pages 2–3, marked `02`/`03`), which is the closest related concept.
 > Everything below is a proposal.
 >
-> **Build status — not built.** The section's one required field is its **destination**
-> (§4 and §10.1), and nothing in the repo knows it. Its content model says the CTA is required
-> rather than data-driven, so there is no honest empty state to ship: the section is held back
-> until the join mechanism is decided. The [hero](../hero/README.md) is held back with it, since
-> its action is this section's anchor.
+> **Build status — built, destination still open.** `sections/join/join.tsx` renders the
+> section (label `join.sh`, marker from `lib/sections.ts`), but both actions still point at
+> `#join`: the join mechanism (§10.1) is undecided, so no real destination exists yet.
+>
+> **Layout (2026-10-18):** a grid rather than a wrapping flex row, so the copy column is
+> `minmax(0, …)` and can never be forced wider than the screen by its contents. At `lg` it is
+> copy (1.2fr) beside Pixie (1fr); below `lg` Pixie sits centred under the copy, at most 18rem
+> wide on phones and 24rem from `sm`. Padding steps 24 → 40 → 64px. The terminal block wraps
+> its lines at Label size on phones and keeps one line per command, at Body size, from `sm` up.
 
 ## 1. Purpose
 

@@ -60,7 +60,9 @@ studio. A schematic, a datasheet and a terminal session are the native documents
 | **Bracket label** | CSS + text | neutomni | `[ Join ICpEP ]`. **Interactive affordances only** — never prose, never a heading. |
 | **Status chip** | component | neutomni | A live state word plus a clock. The state must be true and owned. |
 | **Equation band** | text | neutomni | The `PLAN · BUILD · DEPLOY · REPEAT` motif set as a system rather than a list. |
-| **Route marker** | text | neutomni | `A → B`. Restricted to the Process band. |
+| **Route marker** | text | neutomni | `A → B`. Restricted to the Process band. *Not currently used* (removed 2026-10-18). |
+| **Barcode** | SVG | neutomni | Decorative bars generated from a seed ([`lib/barcode.ts`](../../lib/barcode.ts)). **Only as the face of a ticket's action**, where it gives way to the action's words on hover — never as ornament, and never claiming to scan. |
+| **Ellipse badge** | CSS + text | neutomni | A short label in an elliptical outline. *Not currently used* — removed from the Process band and then from Events on 2026-10-18. |
 | **Overlong line** | CSS | neutomni | A single long line, horizontally clipped and **static**. The marquee, without its problem — see below. |
 
 ### The precision rule
@@ -112,12 +114,11 @@ and the marker and nothing else.
 | — | [hero](../sections/hero/README.md) | *(none — the hero is the page, not a part of it)* | Equation band |
 | 01 | [about](../sections/about/README.md) | `about.md` | — |
 | 02 | [events](../sections/events/README.md) | `events.json` | Reference code |
-| 03 | [projects](../sections/projects/README.md) | `projects/` | Reference code |
-| 04 | [executives & advisers](../sections/executives-advisers/README.md) | `officers.ts` | Metadata key |
-| 05 | [gallery](../sections/gallery/README.md) | `gallery/` | — |
-| 06 | [partners / sponsors](../sections/partners-sponsors/README.md) | `partners.json` | — |
-| 07 | [CTA / join us](../sections/cta-join-us/README.md) | `join.sh` | Bracket label |
-| — | [footer](../sections/footer/README.md) | *(collects every label above as links)* | — |
+| 03 | [executives & advisers](../sections/executives-advisers/README.md) | `officers.ts` | Metadata key |
+| 04 | [gallery](../sections/gallery/README.md) | `gallery/` | — |
+| 05 | [partners / sponsors](../sections/partners-sponsors/README.md) | `partners.json` | — |
+| 06 | [CTA / join us](../sections/cta-join-us/README.md) | `join.sh` | Bracket label |
+| — | [footer](../sections/footer/README.md) | *(none — the file listing was removed 2026-10-18)* | — |
 
 Three consequences worth stating, because they are the difference between a system and a
 decoration:
@@ -125,8 +126,10 @@ decoration:
 - **Markers are page order, not a permanent id.** Inserting a section renumbers everything
   below it. That is intended: the marker describes the page it is on, like the deck's own page
   numbers. Reference codes (`EVT.03`) are per-row and have the same property.
-- **The footer's file listing is the payoff.** The label is only worth its space because the
-  footer collects it — see [footer](../sections/footer/README.md).
+- **The footer's file listing was the payoff — and it has been removed (2026-10-18).** The
+  labels now stand on their own as section metadata. If they start to read as decoration
+  without the listing to collect them, that is the argument for bringing it back — see
+  [footer](../sections/footer/README.md).
 - **A label that would be false is not printed.** `officers.ts`'s per-person portrait filename
   appears only when the portrait exists; `join.sh` does not imply a script the site ships.
 

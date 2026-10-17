@@ -119,6 +119,15 @@ These are Tailwind `--text-*` theme entries, so `text-display` sets the size and
 together and a section never hand-tunes either. Display's sub-1 leading is what keeps the top
 of the clamp from setting as four separate lines.
 
+**Statement** — a **proposal, not from the deck** (2026-10-18). Title is too loud for a long
+sentence and Subheader too quiet for a section's thesis, so one level sits between them, for
+multi-line statements such as About's mission and vision:
+
+```css
+--text-statement: clamp(1.5rem, 3vw, 2.75rem);  /* 44px cap — between Subheader and Title */
+--text-statement--line-height: 1.15;
+```
+
 ## ⚠️ The Tags / Footers row is an anomaly
 
 The deck puts **Tags / Footers at 32–56 pt**, which is *larger* than Body (24–32 pt). On a

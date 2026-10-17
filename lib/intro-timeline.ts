@@ -13,10 +13,7 @@ export const T = {
   shuffleOpacity: 0.55,
   ignition: 0.35,
   hold: 0.11,
-  exit: 0.5,
-  gap: 0.1,
-  curtain: 0.85,
-  repeatFadeOut: 0.85,
+  outro: 0.95,
 };
 
 export function shuffleIntervals({ swaps, from, to, curve }: ShuffleTiming) {

@@ -1,5 +1,4 @@
 import { About } from "@/sections/about/about";
-import { Builds } from "@/sections/builds/builds";
 import { Events } from "@/sections/events/events";
 import { Gallery } from "@/sections/gallery/gallery";
 import { Hero } from "@/sections/hero/hero";
@@ -13,12 +12,14 @@ export default function Home() {
   return (
     <>
       <SiteHeader />
-      <main id="main" className="flex-1">
+      <main
+        id="main"
+        className="relative z-10 flex-1 bg-obsidian shadow-[0_32px_64px_-16px_rgba(8,4,6,0.9)]"
+      >
         <Hero />
 
         <About />
         <Events />
-        <Builds />
         <People />
         <Gallery />
         <Partners />

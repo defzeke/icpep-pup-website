@@ -13,13 +13,15 @@ export function PixieCard() {
           Headphones on, star badge up. Pixie shows up wherever the chapter does — posts, merch, and the occasional event booth.
         </p>
       </div>
-      <Image
-        src="/mascot/pixie-illustration.png"
-        alt="Pixie, the official mascot of ICpEP SE – PUP Manila"
-        width={1229}
-        height={1229}
-        className="relative h-auto w-full max-w-[360px]"
-      />
+      <div className="relative aspect-[4/5] w-full max-w-[320px] overflow-hidden border border-carbon">
+        <Image
+          src="/officers/mascot.png"
+          alt="Pixie, the official mascot of ICpEP SE – PUP Manila"
+          fill
+          sizes="320px"
+          className="object-cover object-top"
+        />
+      </div>
     </article>
   );
 }

@@ -32,13 +32,17 @@ app/
 components/
   common/
     site-header.tsx   Masthead: full-width wordmark that shrinks on scroll and becomes the mono logo. "use client"
-    site-footer.tsx   Mark, the file listing, the copyright bar. Reads the year behind "use cache"
+    site-footer.tsx   Lockup, Connect icons, copyright bar; sticky beneath <main>. Reads the year behind "use cache"
+    footer-reveal.tsx Scrolls the footer fully into view on keyboard focus. "use client"
     page-intro.tsx    The brand splash. "use client"
     smooth-scroll.tsx Starts Lenis, unless reduced motion. "use client"
   ui/
     devices.tsx       Label, Marker, Rule — the design-language primitives
-    status-chip.tsx   The header's clock. "use client"
-    manila-clock.tsx  Live Manila clock (seconds) for hero/footer
+    reveal.tsx        The viewport reveal for [data-reveal] descendants. "use client"
+    status-chip.tsx   The header's clock. "use client" — currently unused
+    manila-clock.tsx  Live Manila clock (seconds) — currently unused
+data/
+  officers.json       The roster: photo filename, name, position, group — in page order
 lib/
   sections.ts         Page order. The single source of markers and filename labels — JSX-free
   placeholders.ts     Every lorem string on the site, in one place — delete when real copy lands
@@ -46,14 +50,17 @@ lib/
   manila-time.test.ts
   intro-timeline.ts   Its timings and shuffle maths — JSX-free, so `node --test` can import it
   intro-timeline.test.ts
+  roller.ts           Rolling-polygon geometry for the process cards — JSX-free
+  roller.test.ts
+  barcode.ts          Seeded decorative barcode widths for the event tickets — JSX-free
+  barcode.test.ts
 sections/
   hero/hero.tsx       Glow mark, name and phrase. Holds the page's only <h1> (visually hidden)
   hero/components/hero-scroll.tsx  The pinned scroll sequence. "use client"
-  about/about.tsx     Marker 01 / about.md, the deck's vision statement, the mark
+  about/about.tsx     Marker 01 / about.md: the mark, mission and vision, then the process cards
   events/events.tsx
-  builds/builds.tsx
-  people/people.tsx
-  gallery/gallery.tsx
+  people/people.tsx   Officers from data/officers.json, advisers, the Pixie card
+  gallery/gallery.tsx Sticky headline with polaroid frames scrolling over it
   partners/partners.tsx
   join/join.tsx
 docs/                 This documentation set, beginning at docs/README.md

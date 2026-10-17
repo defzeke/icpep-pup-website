@@ -29,8 +29,8 @@ Next is [about](../about/README.md).
 
   | Scroll | What happens |
   | --- | --- |
-  | 0–25% | The glow mark, centred, zooms to 1.3×; the two layer labels fade out |
-  | 30–55% | The mark slides left into its column and settles back to 1× |
+  | 0–25% | The glow mark, centred, zooms to 1.3×; the four layer labels fade out |
+  | 28–58% | The mark slides left into its column and settles back to 1×, while a maroon wash (`.hero-wash`: maroon → deep maroon → Obsidian, centred where the mark lands) fades in behind it |
   | 42–57% | `ICPEP.SE PUP MANILA` fades in on the right |
   | 68–78% | The name fades out, rising |
   | 74–86% | The phrase fades in from a 10px blur |
@@ -38,6 +38,12 @@ Next is [about](../about/README.md).
 
   Below `lg` the same sequence runs vertically: the mark rises from the centre and the text
   appears beneath it.
+
+  The four layer labels: 01 top-left and 03 top-right sit at the mark's upper corners, while
+  **02 and 04 sit just below the mark's box** (`-bottom-6`), right and left. The `ICPEP` and
+  `SE PUP` traces reach to within ~6.5% of the image's bottom edge on both sides, so any lower
+  position inside it collides with them. The stage's bottom 35svh fades to `--color-carbon` so
+  the hero meets [about](../about/README.md) without a seam, wash or no wash.
 - **The resting layout is the finished one.** With no JS or with reduced motion there is no pin
   and no sequence: the section is one viewport tall, the mark sits left (above, below `lg`) with
   its labels, and the name and phrase are stacked on the right. JS opts into the animated layout

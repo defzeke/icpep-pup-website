@@ -1,5 +1,47 @@
 # Events
 
+> **Status — draft 3 (2026-10-18).** Each event is a **ticket**, after neutomni's package cards
+> (`sections/events/components/event-card.tsx`): an Off-white body (type, name, blurb, time and
+> venue as a bulleted list) and a stub, separated by a dashed tear line. Text is the maroon
+> family on the light surface — maroon 9.14:1, crimson 4.88:1. The stub carries the date, the
+> **Barcode** device and `Admit one · ICPEP/EVT.0N`.
+>
+> **The barcode is the reserve link.** On hover or keyboard focus its bars drop away left to
+> right (6ms apart, `--duration-base` each) and `Reserve seat →` fades in; on touch screens,
+> which cannot hover, the words show from the start. The link is named `Reserve a seat: <event>`.
+> Bars come from [`lib/barcode.ts`](../../../lib/barcode.ts), seeded by the ticket's code so
+> they never change. Its destination is still `#events` — the reserve flow is §10.5.
+> The ruled-row list described below is superseded.
+>
+> **Draft 4 (2026-10-18) — the reveal**, after neutomni's packages sequence
+> (`components/events-scroll.tsx`). Each ticket is now a **flip card**: the ticket above is the
+> front, and `components/event-back.tsx` is its reverse — a crimson "packaging" face (white text,
+> 5.74:1) with `icpep-mono.png` — the white knockout lockup, cropped to its artwork and 70px tall
+> so its trace wordmark clears the 96px floor — then the ticket's code, a
+> crosshair, a large `EVT` with its number in a diamond, and a `TEAR ALONG LINE` strip. It is
+> `aria-hidden`; the front carries every fact.
+>
+> At `lg` without reduced motion the section pins for 250vh of a 350vh wrapper:
+>
+> | Sequence | What happens |
+> | --- | --- |
+> | 0–25% | A maroon glow (`.events-wash`: maroon → deep maroon → Carbon) comes up behind the statement |
+> | 20–40% | "Show up." blurs back to 45%; "Plug in." (light orange) stays sharp |
+> | 12–54% | The tickets rise from below the fold, tilted (−8°, 6°, 10°), backs showing, staggered |
+> | 50–74% | They flip face-up one after another and settle, all three straight |
+>
+> The resting layout — no JS, below `lg`, reduced motion — is the finished state: the
+> statement and three face-up tickets, unpinned. The "Full calendar" link and the `Upcoming`
+> badge are removed. The stage's top 20svh and bottom 35svh fade to `--color-carbon`, so the
+> maroon glow never meets About above or Executives & Advisers below at a hard edge.
+>
+> **The ticket is one piece, and tears on hover.** Body and stub are joined, with the tear line
+> printed as a dashed perforation along the stub's top edge — no gap. Hovering the ticket, or
+> focusing its link, tears the stub away: it drops 12px and swings 4° clockwise from its
+> top-left corner (`--duration-base`), while the barcode drops into `Reserve seat →`. It settles
+> back on leave. Touch screens, which cannot hover, keep the stub attached and show the words
+> outright; under reduced motion the tear is instant.
+>
 > **Source status.** The deck supplies **social template dimensions** (page 7, marked
 > `7.5`): 1:1 at 2048 × 2048 and 4:5 at 2160 × 2700. It supplies no event data, no card
 > design, and no listing behaviour.
@@ -11,10 +53,12 @@ without scrolling. This is the section that most often decides whether a member 
 
 ## 2. Placement and order
 
-Home page, after [process](../process/README.md). Before [projects](../projects/README.md):
-events are time-sensitive and lose value when buried.
+Home page, after [about](../about/README.md) (whose foot carries the
+[process](../process/README.md) cards). Before
+[executives-advisers](../executives-advisers/README.md): events are time-sensitive and lose value
+when buried.
 
-Events is index marker **`03`**.
+Events is index marker **`02`**.
 
 ## 3. Layout
 

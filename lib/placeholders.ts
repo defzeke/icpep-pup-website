@@ -1,10 +1,7 @@
 export const PLACEHOLDER_COPY = {
   heroStatus: "[Recruiting open]",
   heroPhrase: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
-  aboutBody:
-    "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa.",
-  mission: "[Your mission statement — what the chapter commits to doing for its members, every semester.]",
-  vision: "[Your vision statement — the kind of computer engineers this chapter wants to send into the world.]",
+  processIntro: "[One line on how the chapter works.]",
   processSteps: [
     "Scope the problem. Sketch the architecture before the first line of code or the first solder joint.",
     "Breadboard and repo, side by side. Prototype the hardware and the software as one system.",
@@ -17,13 +14,6 @@ export const PLACEHOLDER_COPY = {
     blurb: "[One line on what attendees will build, learn or ship.]",
     time: "[00:00 – 00:00]",
     venue: "[Venue]",
-  },
-  build: {
-    name: "[Project name]",
-    blurb: "[Two lines on the problem it solves and how the hardware and software fit together.]",
-    category: "[Category]",
-    stack: "[Stack]",
-    team: "[Team / authors]",
   },
   galleryCaption: "[Caption]",
   join: {

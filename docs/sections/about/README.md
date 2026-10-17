@@ -1,5 +1,24 @@
 # About
 
+> **Status — draft 7 (2026-10-18).** Beneath the label row, two columns at `lg`
+> (`sections/about/components/mission-vision.tsx`, `2fr | 3fr`): `public/logos/icpep-mark.png`
+> (decorative, `alt=""`) on the left, vertically centred over a soft `.glow`, and **vision** on
+> the right. Below `lg`, the mark sits centred above it. **Mission is removed** (2026-10-18), with
+> its placeholder. Vision is the deck's statement, verbatim (page 2), at the **Statement** level
+> ([typography.md](../../brand/typography.md#type-scale), 44px cap) — a lead in white, Medium,
+> and an accent in light orange, Regular.
+>
+> **Background:** so the band does not read as a flat slab, it carries the hero's 30°
+> isometric grid (`.iso-grid`), masked by `.about-grid` to radiate from the mark (left at `lg`,
+> top-centre below it), and the glow behind the mark — *Isometric Geometry* and *Atmospheric*.
+> The band is `overflow-clip`, not `-hidden`, so the process cards' sticky stage below still
+> works. The mark, label and statement use the viewport reveal
+> ([motion.md](../../brand/motion.md#the-vocabulary)). The process cards follow in their own
+> full-width band — see [process](../process/README.md).
+>
+> The hero above ends in a fade to `--color-carbon`, this section's background, so the two meet
+> without a seam — see [hero](../hero/README.md).
+>
 > **Source status.** The deck supplies real copy for this section: the **Vision**
 > statement and the **Theme breakdown** (pages 2 and 3, marked `02`/`03`). How much of
 > that is public-facing is undecided.

@@ -1,5 +1,22 @@
 # Executives & Advisers
 
+> **Status — draft 2 (2026-10-18).** Real portraits are in `public/officers/` (listed in
+> [inventory.md](../../assets/inventory.md#officer-portraits)), and the roster is
+> **`data/officers.json`** — one entry per portrait: `photo` (the exact filename), `name`,
+> `position`, `group` (`executive` | `adviser`). The file is the order on the page: president,
+> vice president, VPs, secretary, treasurer, auditor, AVPs, then advisers — 17 executives and one
+> adviser as of 2026-10-18, with the VPs and AVPs each in the same portfolio order (internal,
+> tech, ops, rel, marketing, graphics). Names and positions are blank until the chapter fills
+> them in, and render as `[Name]` / `[Position]` meanwhile.
+>
+> Each card (`sections/people/components/officer-card.tsx`) is a 4:5 frame (`object-cover
+> object-top`), then `ID // name` and `ROLE // position`. The portrait-filename label described
+> below is **not shown**, by decision (2026-10-18), even though every portrait exists. `alt` is
+> `"<name>, <position>"`, or empty while the name is blank so a screen reader does not announce
+> placeholders. Executives are a `<ul>` under a visually hidden `<h3>`; advisers keep their own
+> group and heading. The Pixie card now uses `public/officers/mascot.png`, a dark 3D portrait
+> that sits on Obsidian, in place of the white-backed illustration.
+>
 > **Source status.** Nothing in the deck covers this section. The empty
 > `public/officers/` folder in the repo shows it was planned. Everything below is a
 > proposal.
@@ -11,11 +28,10 @@ for prospective members, partners and the university alike.
 
 ## 2. Placement and order
 
-Home page, after [projects](../projects/README.md). Before
-[gallery](../gallery/README.md) and [partners-sponsors](../partners-sponsors/README.md) —
-people before logos.
+Home page, after [events](../events/README.md). Before [gallery](../gallery/README.md) —
+who runs the chapter, then what being in it looks like.
 
-Executives & Advisers is index marker **`05`**.
+Executives & Advisers is index marker **`03`**.
 
 ## 3. Layout
 

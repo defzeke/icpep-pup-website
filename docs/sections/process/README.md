@@ -1,6 +1,31 @@
 # Process
 
-> **Status — draft 2.** The four steps now live inside the About section (see `components/about.tsx`); this section is no longer rendered as a standalone page section. Doc retained for reference.
+> **Status — draft 4 (2026-10-18).** The four steps live at the foot of About
+> (`sections/about/components/process-steps.tsx`, anchor `#process`) as **four cards** after
+> neutomni's process band, in a band of their own that escapes About's `max-w-7xl` container and
+> runs nearly edge to edge (a 16–24px gutter). Above them, only a one-line intro (placeholder);
+> the `A → B` route marker and the ellipse `Our process` badge are removed, and `Our process`
+> remains as a visually hidden `<h3>` naming the list. Cards are 78svh tall while pinned (28rem
+> at rest) and step through the palette's **mass gradient**
+> ([color-palette.md](../../brand/color-palette.md#gradients-and-glow)): `--color-maroon`,
+> `--color-burgundy`, `--color-crimson` with white text (10.76, 8.95 and 5.74:1), then
+> `--color-bright-orange` with Obsidian text (6.13:1) for `REPEAT`, the loop, with a `↺`.
+>
+> **The drawing only ever appears on a card.** The canvas is masked (`destination-in`) to each
+> card's risen part, read from the same `clip-path` GSAP applies, so the road, the axle and the
+> polygon rise with the cards and nothing is drawn on the empty band before them.
+>
+> **Motion (≥ `lg`, no reduced motion):** the block pins for 200vh of a 300vh wrapper, but the
+> sequence **starts before the pin** — once the block's top is 60% of a viewport from the top
+> (`LEAD`), so the first card is already rising as the block scrolls in. Cards rise from the
+> bottom one after another (`clip-path`, at 5/20/35/50% of the sequence), while a canvas
+> draws a **square rolling along a road of inverted catenary arches** — the curve on which a
+> regular polygon rolls with its centre perfectly level — over a dashed axle line. From 35% the
+> square rounds into a circle as the road flattens. The geometry is
+> [`lib/roller.ts`](../../../lib/roller.ts) (tested), written for this repo, not copied. Below
+> `lg`, under reduced motion or without JS: four static cards, no pin, nothing drawn.
+>
+> The rail, route arrows and `makefile` label described below are superseded.
 
 > **Source status.** The deck does not document this section. Its whole basis is the page
 > furniture mantra `PLAN` `BUILD` `DEPLOY` `REPEAT` (deck pages 2–3, marked `02`/`03`), which

@@ -1,10 +1,12 @@
-import Image from "next/image";
 import { cacheLife } from "next/cache";
+import { FooterReveal } from "./footer-reveal";
 
-import { SECTIONS } from "@/lib/sections";
-import { ManilaClock } from "@/components/ui/manila-clock";
+// Contract: docs/sections/footer/README.md.
 
-const LISTED = SECTIONS.filter((section) => section.built);
+// icpep-lockup-obsidian.png's artwork is 447 × 310 of its 710 × 355 canvas, from (118, 22).
+// At 112px tall the trace wordmark is ~161px wide, clear of the 96px legibility floor.
+const LOGO_H = 112;
+const K = LOGO_H / 310;
 
 async function copyrightYear() {
   "use cache";
@@ -12,107 +14,89 @@ async function copyrightYear() {
   return new Date().getFullYear();
 }
 
+const SOCIALS = [
+  {
+    label: "Facebook",
+    href: "#top",
+    icon: <path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v7h4v-7h3l1-4h-4V8z" strokeLinejoin="round" />,
+  },
+  {
+    label: "Instagram",
+    href: "#top",
+    icon: (
+      <>
+        <rect x="3" y="3" width="18" height="18" rx="5" />
+        <circle cx="12" cy="12" r="4" />
+        <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" />
+      </>
+    ),
+  },
+  {
+    label: "LinkedIn",
+    href: "#top",
+    icon: (
+      <>
+        <rect x="3" y="3" width="18" height="18" rx="2" />
+        <path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7" strokeLinecap="round" />
+      </>
+    ),
+  },
+  {
+    label: "Email",
+    href: "mailto:icpepse.pupmanila@gmail.com",
+    icon: (
+      <>
+        <rect x="3" y="5" width="18" height="14" rx="2" />
+        <path d="M3 7l9 6 9-6" strokeLinejoin="round" />
+      </>
+    ),
+  },
+];
+
 export async function SiteFooter() {
   const year = await copyrightYear();
 
   return (
-    <footer className="border-t border-carbon bg-obsidian">
+    // Sits beneath <main> (z-10) and is uncovered as the page scrolls off it. Only on screens
+    // tall enough to show all of it. Never raised above the page: keyboard focus scrolls to it.
+    <footer className="bottom-0 z-0 border-t border-carbon bg-obsidian [@media(min-height:720px)]:sticky">
+      <FooterReveal />
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="flex flex-wrap gap-12">
-          <div className="flex flex-[2_1_320px] flex-col gap-5">
-            <Image
-              src="/logos/icpep-mono.png"
-              alt="ICpEP SE – PUP Manila"
-              width={753}
-              height={753}
-              className="h-10 w-auto"
-            />
+        <div className="flex flex-wrap items-end justify-between gap-12">
+          <div className="flex flex-col gap-6">
+            <div className="relative overflow-hidden" style={{ width: 447 * K, height: LOGO_H }}>
+              {/* eslint-disable-next-line @next/next/no-img-element -- cropped to its artwork by offset */}
+              <img
+                src="/logos/icpep-lockup-obsidian.png"
+                alt="ICpEP SE – PUP Manila"
+                className="absolute max-w-none"
+                style={{ width: 710 * K, left: -118 * K, top: -22 * K }}
+              />
+            </div>
             <p className="max-w-sm text-body text-off-white/80">
               Institute of Computer Engineers of the Philippines — Student Edition, Polytechnic
               University of the Philippines Manila.
             </p>
           </div>
 
-          <nav aria-label="Footer" className="flex flex-1 basis-[160px] flex-col gap-1">
-            <span className="mb-2 font-mono text-label uppercase tracking-[0.14em] text-off-white/60">
-              Navigate //
-            </span>
-            {LISTED.map((section) => (
-              <a
-                key={section.slug}
-                href={`#${section.slug}`}
-                aria-label={`${section.label} (${section.filename})`}
-                className="font-mono text-label text-light-orange transition-colors duration-[var(--duration-fast)] ease-out hover:text-off-white"
-              >
-                {section.filename}
-              </a>
-            ))}
-          </nav>
-
-          <div className="flex flex-1 basis-[220px] flex-col gap-3">
+          <div className="flex flex-col gap-3">
             <span className="font-mono text-label uppercase tracking-[0.14em] text-off-white/60">
               Connect //
             </span>
             <div className="flex gap-2">
-              <a
-                href="#top"
-                aria-label="Facebook"
-                className="inline-flex h-11 w-11 items-center justify-center border border-off-white/20 text-off-white transition-colors hover:text-light-orange"
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-                  <path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v7h4v-7h3l1-4h-4V8z" strokeLinejoin="round" />
-                </svg>
-              </a>
-              <a
-                href="#top"
-                aria-label="Instagram"
-                className="inline-flex h-11 w-11 items-center justify-center border border-off-white/20 text-off-white transition-colors hover:text-light-orange"
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-                  <rect x="3" y="3" width="18" height="18" rx="5" />
-                  <circle cx="12" cy="12" r="4" />
-                  <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" />
-                </svg>
-              </a>
-              <a
-                href="#top"
-                aria-label="LinkedIn"
-                className="inline-flex h-11 w-11 items-center justify-center border border-off-white/20 text-off-white transition-colors hover:text-light-orange"
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
-                  <rect x="3" y="3" width="18" height="18" rx="2" />
-                  <path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7" />
-                </svg>
-              </a>
-              <a
-                href="mailto:icpepse.pupmanila@gmail.com"
-                aria-label="Email"
-                className="inline-flex h-11 w-11 items-center justify-center border border-off-white/20 text-off-white transition-colors hover:text-light-orange"
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" aria-hidden="true">
-                  <rect x="3" y="5" width="18" height="14" rx="2" />
-                  <path d="M3 7l9 6 9-6" />
-                </svg>
-              </a>
+              {SOCIALS.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  aria-label={social.label}
+                  className="inline-flex h-11 w-11 items-center justify-center border border-off-white/20 text-off-white transition-colors duration-[var(--duration-fast)] hover:text-light-orange"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+                    {social.icon}
+                  </svg>
+                </a>
+              ))}
             </div>
-            <a
-              href="mailto:icpepse.pupmanila@gmail.com"
-              className="border-b border-dashed border-light-orange font-mono text-label text-off-white transition-colors hover:text-light-orange"
-            >
-              icpepse.pupmanila@gmail.com
-            </a>
-          </div>
-
-          <div className="flex flex-1 basis-[180px] flex-col gap-2">
-            <span className="font-mono text-label uppercase tracking-[0.14em] text-off-white/60">
-              Local //
-            </span>
-            <span className="font-mono text-subheader font-bold text-off-white">
-              <ManilaClock />
-            </span>
-            <span className="font-mono text-label uppercase tracking-[0.12em] text-off-white/80">
-              PHT · Sta. Mesa, Manila
-            </span>
           </div>
         </div>
 

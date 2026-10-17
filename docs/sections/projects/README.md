@@ -1,5 +1,9 @@
 # Projects / Build Showcase
 
+> **Status — removed (2026-10-18).** The section, `sections/builds/` and its placeholder copy are
+> deleted, and [gallery](../gallery/README.md) takes its place in the page order. This doc is
+> kept as the record of what was specified, should a build showcase return.
+>
 > **Source status.** Nothing in the deck covers this section. Its only tie to the brand is
 > the **`BUILD`** word in the `PLAN · BUILD · DEPLOY · REPEAT` motif (deck page furniture).
 > Everything below is a proposal.

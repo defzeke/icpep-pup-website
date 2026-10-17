@@ -1,14 +1,14 @@
 # Page intro
 
 The brand splash: a dimmed logo that shuffles through the flat variants and ignites into the
-glow, then lifts a curtain off the page behind it.
+glow, then fades away and hands the stage to the hero, whose logo arrives from far away.
 
 ## When it plays
 
 | Situation                                 | Behaviour                                       |
 | ----------------------------------------- | ----------------------------------------------- |
 | First full page load in a session         | Full sequence, \~3.1s                           |
-| Later full page loads in the same session | Shortened, \~1.25s, opening on the settled glow |
+| Later full page loads in the same session | Shortened, \~1.35s, opening on the settled glow |
 | Client-side navigation between routes     | Nothing — the root layout does not remount      |
 | `prefers-reduced-motion: reduce`          | Nothing, ever                                   |
 
@@ -34,6 +34,7 @@ The attribute lives on `<html>`. It is the only coupling between the three files
 | *(absent)* / `skip` | server render | Hidden. Also the permanent state when there is no JS |
 | `play` | `INTRO_SCRIPT` | Full sequence |
 | `repeat` | `INTRO_SCRIPT` | Shortened sequence |
+| `land` | `page-intro.tsx`, as the panel starts to dissolve | Still shown, dissolving; cues the hero logo's arrival |
 | `done` | `page-intro.tsx`, on completion | Hidden |
 
 `INTRO_SCRIPT` runs synchronously in `<head>`, before first paint, so nothing flickers. It
@@ -54,7 +55,7 @@ with a usable page rather than a blank one.
 2. **Script runs, React never hydrates.** The overlay is visible but nothing is animating it.
    The CSS **bailout** — a 1ms discrete animation on `.intro__bailout` with a 5s delay — hides
    it. GSAP disarms that bailout the moment it takes over, so a merely slow hydration is never
-   cut off mid-curtain. The bailout sits on a wrapper GSAP never touches, because a CSS
+   cut off mid-flight. The bailout sits on a wrapper GSAP never touches, because a CSS
    animation would otherwise win over GSAP's inline styles.
 3. **Reduced motion.** Covered twice: the script leaves `skip`, and a `@media` rule force-hides
    the overlay at matching specificity.
@@ -71,9 +72,9 @@ First visit, seconds from hydration:
 | 0.00 | Stack fades in on `mono`, dimmed to 55% |
 | 0.41–1.65 | Shuffle, 14 swaps decelerating 55ms → 165ms |
 | 1.70 | Ignition: last variant crossfades into `glow`, stack to 100% |
-| 2.16 | Content exits, rising |
-| 2.26 | Panel `scaleY: 1 → 0` from the top — the curtain |
-| 3.11 | `data-intro="done"` |
+| 2.16 | Outro (`T.outro`, 0.95s): the mark fades out in place over 0.48s |
+| 2.54 | `data-intro="land"`: the panel dissolves (0.57s) and the hero's logo starts arriving (1.2s) |
+| 3.11 | `data-intro="done"`; the arrival finishes at ~3.74 |
 
 All timings are `T` in [`lib/intro-timeline.ts`](../lib/intro-timeline.ts), which
 also holds `shuffleIntervals()` (the quadratic deceleration) and `shuffleOrder()`. They sit in a
@@ -85,8 +86,7 @@ JSX-free file so `node --test` can import them — see
 splash therefore opens abstract, and the ignition is the single step that adds light.
 
 A **repeat** visit takes a different, shorter path and does not shuffle: the content fades in
-over 0.2s on the already-settled glow, the mark rises 20% and fades out over 0.3s, and the panel
-*fades* (`repeatFadeOut`, 0.85s) rather than wiping.
+over 0.2s on the already-settled glow and, from 0.4s, runs the same outro.
 
 ## The shuffle
 
@@ -118,9 +118,28 @@ is requested at `fetchPriority="high"` while the other three stay `"low"`.
 
 ## Hand-off
 
-Elements marked `[data-intro-reveal]` fade in and rise 24px, staggered 0.06s, starting at 35% of
-the curtain. The query is deliberately **unscoped** — these live outside the overlay. Nothing is
-marked yet; sections opt in as they are built. See
+**The intro leaves; the hero's logo arrives.** No attempt is made to match the two — an earlier
+version flew the intro's mark onto the hero's and could never quite hide the swap. Now the mark
+fades out in place, the panel dissolves, and the hero's logo assembly (`[data-intro-target]`:
+the glow, the mark and its layer labels) **arrives from far away** — from 35% scale, blurred
+14px and transparent to its resting state over 1.2s on `--ease-out`.
+
+It is driven entirely by CSS on `html[data-intro]` (`app/globals.css`):
+
+- `play` / `repeat` — the target holds its starting (invisible) frame. A copy of the arrival is
+  queued at a 5s delay, so if React never hydrates the logo still arrives when the bailout clears
+  the overlay. That keeps failure layer 2 above a usable page.
+- `land` — set by the timeline as the panel starts to dissolve; the arrival runs. The two
+  keyframe names differ so this restarts the animation rather than resuming the queued one.
+- `done` — same rule as `land`, so the arrival is not interrupted.
+- Reduced motion — no arrival at all; the logo is simply there.
+
+**The intro never writes inline styles on the page beneath it** — only the `<html>` attribute
+changes, which `suppressHydrationWarning` already covers — so it cannot cause a hydration
+mismatch.
+
+Elements marked `[data-intro-reveal]` fade in and rise 24px, staggered 0.06s, as the panel
+starts to fade. The queries are deliberately **unscoped** — these live outside the overlay. See
 [`sections/hero/README.md`](sections/hero/README.md).
 
 ## Accessibility

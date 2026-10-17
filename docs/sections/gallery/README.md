@@ -1,5 +1,21 @@
 # Gallery
 
+> **Status — draft 2 (2026-10-18).** A **pinned backdrop with frames scrolling over it**: the
+> label row and the headline (`The ICpEP.SE Experience`, Display, mixed case so the org's spelling survives) sit in a
+> `position: sticky`, viewport-high backdrop, while a layer of tilted polaroid-style frames
+> scrolls up across it at normal scroll speed, then the section scrolls away
+> (`sections/gallery/gallery.tsx`, `components/gallery-grid.tsx`). No JavaScript: it is sticky
+> positioning, so it has no reduced-motion variant to need.
+>
+> Frames are Off-white cards (a 4:5 photo slot and a Mono caption in `--color-maroon`, 9.14:1),
+> nine in a three-column flow (two below `md`), each with its own tilt (±3–8°) and drop (0–30svh)
+> so the grid never reads as one. The layer starts 75svh down so the headline opens clear, and
+> ends 45svh past the last frame so it clears again before the section leaves. The layer ignores
+> the pointer except on the frames themselves. **There are still no photographs**: each slot is
+> a hatched `[ photo ]` placeholder, and captions are `IMG_00N // [Caption]`. The captions are
+> Mono rather than the reference's handwriting, which this type system does not have. The 2×2
+> masonry grid described below is superseded.
+>
 > **Source status.** Nothing in the deck covers this section. The only relevant fact is
 > that social output exists in **1:1 (2048 × 2048)** and **4:5 (2160 × 2700)** (deck page 7,
 > marked `7.5`). Everything below is a proposal.
@@ -12,9 +28,11 @@ Gallery says "this is what it was like" — it converts hesitation into confiden
 ## 2. Placement and order
 
 Home page, after [executives-advisers](../executives-advisers/README.md). Before
-[partners-sponsors](../partners-sponsors/README.md) — visual proof before partner logos.
+[partners-sponsors](../partners-sponsors/README.md). (Reordered twice on 2026-10-18: it first
+took the removed [projects](../projects/README.md) section's place after Events, then swapped
+with Executives & Advisers.)
 
-Gallery is index marker **`06`**.
+Gallery is index marker **`04`**.
 
 ## 3. Layout
 

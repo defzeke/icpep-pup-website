@@ -54,10 +54,29 @@ export function PageIntro() {
 
         const tl = gsap.timeline({ onComplete: finish });
 
+        const reveal = gsap.utils.toArray<HTMLElement>("[data-intro-reveal]");
+
+        // Outro: the mark fades out in place, then the panel dissolves. `land` cues the hero's
+        // [data-intro-target] to arrive — in CSS only, so nothing here writes to the page beneath.
+        const handOff = (at: number) => {
+          const dissolve = at + T.outro * 0.4;
+          tl.to(content, { autoAlpha: 0, duration: T.outro * 0.5, ease: "power1.inOut" }, at);
+          tl.call(
+            () => {
+              document.documentElement.dataset.intro = "land";
+            },
+            undefined,
+            dissolve
+          );
+          tl.to(panel, { autoAlpha: 0, duration: T.outro * 0.6, ease: "power1.inOut" }, dissolve);
+          if (reveal.length) {
+            tl.from(reveal, { autoAlpha: 0, y: 24, duration: 0.6, stagger: 0.06, ease: "power2.out" }, dissolve);
+          }
+        };
+
         if (isRepeat) {
-          tl.to(content, { autoAlpha: 1, duration: 0.2, ease: "power1.out" }, 0)
-            .to(items, { autoAlpha: 0, yPercent: -20, duration: 0.3, ease: "power2.in" }, "+=0.2")
-            .to(panel, { autoAlpha: 0, duration: T.repeatFadeOut, ease: "power2.out" }, "<");
+          tl.to(content, { autoAlpha: 1, duration: 0.2, ease: "power1.out" }, 0);
+          handOff(0.4);
           return;
         }
 
@@ -82,20 +101,7 @@ export function PageIntro() {
         tl.to(items[LAST], { autoAlpha: 1, duration: T.ignition, ease: "power2.out" }, at);
         tl.to(stack, { autoAlpha: 1, duration: T.ignition, ease: "power2.out" }, at);
 
-        const exitAt = at + T.ignition + T.hold;
-        tl.to(content, { autoAlpha: 0, yPercent: -8, duration: T.exit, ease: "power2.in" }, exitAt);
-
-        const curtainAt = exitAt + T.gap;
-        tl.to(panel, { scaleY: 0, duration: T.curtain, ease: "power2.inOut" }, curtainAt);
-
-        const reveal = gsap.utils.toArray<HTMLElement>("[data-intro-reveal]");
-        if (reveal.length) {
-          tl.from(
-            reveal,
-            { autoAlpha: 0, y: 24, duration: 0.6, stagger: 0.06, ease: "power2.out" },
-            curtainAt + T.curtain * 0.35
-          );
-        }
+        handOff(at + T.ignition + T.hold);
       });
 
       return () => mm.revert();

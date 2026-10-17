@@ -58,7 +58,6 @@ the work stands.
 | About | [sections/about/README.md](sections/about/README.md) |
 | Process | [sections/process/README.md](sections/process/README.md) |
 | Events | [sections/events/README.md](sections/events/README.md) |
-| Projects / Build Showcase | [sections/projects/README.md](sections/projects/README.md) |
 | Executives & Advisers | [sections/executives-advisers/README.md](sections/executives-advisers/README.md) |
 | Gallery | [sections/gallery/README.md](sections/gallery/README.md) |
 | Partners / Sponsors | [sections/partners-sponsors/README.md](sections/partners-sponsors/README.md) |
@@ -68,7 +67,10 @@ the work stands.
 
 The order above **is** the page order, and each section's index marker
 ([`01`–`09`](brand/design-language.md#where-the-devices-live)) is its position in it. Process and
-FAQ were added on 2026-10-17 after the composition reference was adopted.
+FAQ were added on 2026-10-17 after the composition reference was adopted. On 2026-10-18 the
+**Projects / Build Showcase** section was removed, and Gallery now follows Executives & Advisers; its
+doc is kept at [sections/projects/README.md](sections/projects/README.md) as a record. What the
+page actually renders, and in what order, is `lib/sections.ts`.
 
 **Two sections the reference site has are deliberately absent:** testimonials and pricing. There
 are no member quotes and no prices, and inventing either would break rule 2 below. Both are
