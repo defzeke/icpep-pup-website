@@ -12,7 +12,8 @@ Everything else is about the repo itself: how it is built, what has been built, 
 for changing it.
 
 **New here?** Read [`rules.md`](rules.md), then [`architecture.md`](architecture.md), then
-[`skills.md`](skills.md) for the procedures.
+[`skills.md`](skills.md) for the procedures. **Coming back?** [`tasks.md`](tasks.md) says where
+the work stands.
 
 ## Index
 
@@ -20,10 +21,11 @@ for changing it.
 
 | Doc | Covers |
 | --- | --- |
-| [rules.md](rules.md) | The non-negotiables, and the accepted risks |
+| [rules.md](rules.md) | The non-negotiables, the approach, and the accepted risks |
 | [architecture.md](architecture.md) | Stack, file map, rendering model, where things go |
-| [skills.md](skills.md) | Repeatable procedures: regenerate assets, add a token, add a section, verify |
+| [skills.md](skills.md) | Repeatable procedures: regenerate assets, add a token, add a section, add a test, verify |
 | [intro.md](intro.md) | The brand splash: states, timeline, failure modes, assets |
+| [tasks.md](tasks.md) | Where the work stands. Derived — the docs below win |
 | [glossary.md](glossary.md) | Every term this repo uses, in the sense this repo means it |
 
 ### Brand

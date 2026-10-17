@@ -6,7 +6,7 @@ Philippines – Student Edition**, built from the organization's brand guideline
 **Read [`docs/rules.md`](docs/rules.md) before changing anything.** It is short, and it is the
 contract. Then [`docs/architecture.md`](docs/architecture.md) for the stack and file map, and
 [`docs/skills.md`](docs/skills.md) for the procedures. Full index:
-[`docs/README.md`](docs/README.md).
+[`docs/README.md`](docs/README.md). Returning to in-flight work? [`docs/tasks.md`](docs/tasks.md).
 
 <!-- BEGIN:nextjs-agent-rules -->
 

@@ -19,6 +19,8 @@ npm run dev        # http://localhost:3000
 | `npm run build` | Production build |
 | `npm start` | Serve the production build |
 | `npm run lint` | ESLint |
+| `npm test` | Unit tests — `node --test`, no framework |
+| `npm run check:links` | Markdown link and anchor check |
 | `npx tsc --noEmit` | Type check |
 
 ## Documentation
@@ -28,10 +30,21 @@ Start at **[docs/README.md](docs/README.md)**.
 - **[docs/rules.md](docs/rules.md)** — the non-negotiables. Read this one first.
 - **[docs/architecture.md](docs/architecture.md)** — stack, file map, rendering model.
 - **[docs/skills.md](docs/skills.md)** — repeatable procedures: regenerate assets, add a token,
-  add a section, verify a change.
+  add a section, add a test, verify a change.
 - **[docs/intro.md](docs/intro.md)** — the brand splash: states, timeline, failure modes.
+- **[docs/tasks.md](docs/tasks.md)** — where the work stands.
 - **[docs/brand/overview.md](docs/brand/overview.md)** — colour, type, logo, mascot, theme.
 - **[docs/sections/hero/README.md](docs/sections/hero/README.md)** — one doc per page section.
+
+## Security
+
+Advisory, never blocking — see [docs/rules.md](docs/rules.md) §15.
+
+- `npm audit --audit-level=high` for dependency advisories. It is currently red on one upstream
+  advisory, and the fix it advertises would break the build. Read the `braces` note in
+  [docs/rules.md](docs/rules.md) **before** running anything with `--force`.
+- Dependabot opens grouped dependency PRs weekly.
+- A gitleaks workflow scans commits for credentials.
 
 ## What exists
 

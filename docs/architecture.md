@@ -18,16 +18,26 @@ data; the bundled reference is `node_modules/next/dist/docs/`. Read it before wr
 ## File map
 
 ```
+.github/
+  dependabot.yml      Grouped dependency PRs, weekly for npm
+  workflows/
+    gitleaks.yml      Credential scan on push and PR
+.opencode/
+  skills/ponytail/    The adopted ponytail ruleset — docs/rules.md is still the contract
 app/
   layout.tsx          Real. Fonts, metadata, INTRO_SCRIPT, <PageIntro />, dark-first body
   page.tsx            Still the create-next-app scaffold — not the real home page
   globals.css         The design system: @theme tokens, :root, body, the whole intro
 components/
   page-intro.tsx      The brand splash. The only "use client" component
-docs/                 This documentation set
+  intro-timeline.ts   Its timings and shuffle maths — JSX-free, so `node --test` can import it
+  intro-timeline.test.ts
+docs/                 This documentation set, beginning at docs/README.md
 public/
   logos/              5 canonical logo variants
   intro/              4 derived 576px WebP assets
+scripts/
+  check-links.mjs     Markdown link and anchor check — `npm run check:links`
 ```
 
 `app/page.tsx` is untouched boilerplate. It sets its own backgrounds, so the dark-first
@@ -63,6 +73,7 @@ The three-file split is the design: markup and the state flag in `layout.tsx`, p
 | --- | --- |
 | A colour or type token | `@theme` in `app/globals.css`, then document it in `brand/` |
 | A one-off section style | `app/globals.css`, alongside the intro block |
+| A test | A `*.test.ts` beside the JSX-free logic it covers — [`skills.md`](skills.md) |
 | A page section | A doc in `docs/sections/<name>/` **first**, then `components/` |
 | An asset | A row in [`assets/inventory.md`](assets/inventory.md) first, then `public/` |
 | A derived asset | A generator, plus the rules in [`skills.md`](skills.md) |
@@ -72,8 +83,11 @@ The three-file split is the design: markup and the state flag in `layout.tsx`, p
 - **No CSS modules, no styled-components.** Tailwind utilities for layout and spacing; plain CSS
   in `globals.css` only where a component owns a real micro-animation (the intro).
 - **No state library, no router state.** Nothing so far needs it.
-- **No test framework.** The gates are `tsc`, `eslint` and `next build`
-  ([`rules.md`](rules.md)).
+- **No test framework.** `node --test` ships with Node and strips types itself, so unit tests
+  cost no dependency. The gates are in [`rules.md`](rules.md).
+- **No component tests.** Nothing renders a component in isolation yet, and adding a DOM harness
+  is not worth it for one animation. `page-intro.tsx` is covered by its extracted maths plus
+  manual inspection — which is why the intro is recorded as unverified in a browser.
 
 ## Open questions
 

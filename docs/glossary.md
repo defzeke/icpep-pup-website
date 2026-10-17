@@ -38,11 +38,22 @@ Terms used throughout this repo, in the sense this repo means them.
 | **Hand-off** | The `[data-intro-reveal]` hook: content rises with the intro's curtain. |
 | **Ignition** | The beat where the shuffle stops and the glow lights up. |
 
+## Process
+
+| Term | Meaning |
+| --- | --- |
+| **Ponytail** | The adopted ruleset for writing the smallest complete change. Loaded from [`.opencode/skills/ponytail/SKILL.md`](../.opencode/skills/ponytail/SKILL.md); [`rules.md`](rules.md) is the contract where the two disagree. |
+| **Laziness ladder** | The six rungs checked before writing code: does it need to exist → already in this codebase → standard library → installed dependency → one line → the minimum that works. |
+| **`shortcut:` comment** | The only permitted comment form besides an invariant: `shortcut: <the limit>, <when to upgrade>`. A named deferral, not a to-do. |
+| **Gate** | A command that must pass before commit. See [`rules.md`](rules.md). |
+| **Accepted risk** | A known, deliberate exposure recorded in [`rules.md`](rules.md) instead of fixed. |
+
 ## Writing
 
 | Term | Meaning |
 | --- | --- |
 | **Open questions** | A section in every doc. Unspecified things get recorded here, never guessed. |
+| **Derived doc** | A doc that records current state rather than defining it — [`tasks.md`](tasks.md). The docs it links to win on any conflict. |
 | **Derived fact** | Something measured rather than quoted from the deck — contrast ratios, pixel sizes. The method is stated. |
 | **Proposal** | A design decision not present in the deck. Labelled as such. |
 

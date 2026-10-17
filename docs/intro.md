@@ -21,7 +21,8 @@ It lives in `app/layout.tsx`, so it runs on **every** full page load, not just `
 | --- | --- |
 | `app/layout.tsx` | `INTRO_SCRIPT`, the `data-intro="skip"` default, mounting `<PageIntro />` |
 | `app/globals.css` | `.intro`, `.intro__*`, the reduced-motion override |
-| `components/page-intro.tsx` | The timeline, the shuffle, `T` |
+| `components/page-intro.tsx` | The timeline and the overlay markup |
+| `components/intro-timeline.ts` | `T` and the shuffle maths — JSX-free, so it is testable |
 | `public/intro/*.webp` | Four derived 576px assets — see [`assets/inventory.md`](assets/inventory.md) |
 
 ## The `data-intro` state machine
@@ -74,8 +75,10 @@ First visit, seconds from hydration:
 | 2.26 | Panel `scaleY: 1 → 0` from the top — the curtain |
 | 3.11 | `data-intro="done"` |
 
-All timings are `T` at the top of `components/page-intro.tsx`. `shuffleIntervals()` applies the
-quadratic deceleration; `shuffleOrder()` builds the order.
+All timings are `T` in [`components/intro-timeline.ts`](../components/intro-timeline.ts), which
+also holds `shuffleIntervals()` (the quadratic deceleration) and `shuffleOrder()`. They sit in a
+JSX-free file so `node --test` can import them — see
+[`intro-timeline.test.ts`](../components/intro-timeline.test.ts).
 
 `VARIANTS` is ordered **form → mark → name → emitted light** — `mono`, `mark`, `primary`,
 `glow`. The opening frame is `[0]` and the landing is `[LAST]`; only the middle is shuffled. The
@@ -135,6 +138,9 @@ accepted deliberately — the alternative is trapping focus, which is worse.
   second. Crossfades and the dim reduce it but do not eliminate it. No media query covers
   photosensitivity. See [`rules.md`](rules.md).
 - **LCP.** The hero sits behind an opaque panel for ~3.1s.
+- **Nobody has watched it.** The arithmetic is unit-tested against this document, but the motion
+  itself has never been reviewed in a browser — no browser automation was available. Treat the
+  timeline table above as specified behaviour, not observed behaviour.
 - **Decode warm-up is a mitigation, not a guarantee.** `img.decode()` runs for all four at
   start, but a slow *network* can still leave an asset missing at its first swap. The timeline
   is deliberately never gated on decode, so the worst case is a moment of fidelity rather than a

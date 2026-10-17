@@ -91,19 +91,64 @@ Expect ~132KB total. Confirm the size and the numbers against
 4. Add the row to the index in [`README.md`](README.md).
 5. Only then build the component. Sections are documented before they are coded.
 
+## Add a test
+
+`npm test` is `node --test`. No framework, no config file, no dependencies.
+
+1. **Keep the logic in a `.ts` file with no JSX in it.** Node strips types but **not JSX**, so
+   the runner cannot import a `.tsx` file. That is the only reason the intro's timings and
+   shuffle maths live in `components/intro-timeline.ts` instead of inside `page-intro.tsx`.
+2. **Write `*.test.ts` next to it.** The runner discovers that pattern on its own.
+3. **Import with the real extension** — `from "./intro-timeline.ts"`. Node resolves files, not
+   module specifiers, so the extension is required here even though bundler code omits it.
+   `tsconfig.json` sets `allowImportingTsExtensions` for exactly this, and nothing else should
+   use one.
+4. **Test a real failure.** The existing three cover the interval range and its deceleration,
+   the no-repeat guarantee in the shuffle order, and the derived total matching the number
+   [`intro.md`](intro.md) documents. That last one is the pattern worth copying: it fails when
+   the code and the docs drift apart.
+
+Do not test a constant. If the test would pass no matter what the code did, delete it.
+
+## Run the security checks
+
+All of these **report**; none of them block. See [`rules.md`](rules.md) §15.
+
+```bash
+npm audit --audit-level=high
+```
+
+Dependency advisories. It is currently **red on purpose** — see the `braces` entry in
+[`rules.md`](rules.md). **Never run `npm audit fix --force` in this repo**: the only fix it
+offers is a downgrade that takes the lint toolchain off the Next 16 line.
+
+`.github/workflows/gitleaks.yml` scans commits for credentials on every push and PR. Running it
+locally needs the Go binary rather than an npm package — `scoop install gitleaks` on Windows,
+then `gitleaks git`. If you would rather not install anything, `npx secretlint "**/*"` covers
+the same ground.
+
+`.github/dependabot.yml` opens grouped weekly PRs for npm and monthly ones for actions. It only
+ever proposes **upgrades**, so it will not offer the `eslint-config-next` downgrade above.
+
 ## Verify a change
 
 ```bash
 npx tsc --noEmit
 npm run lint
+npm test
+npm run check:links
 npm run build
 ```
 
-There is no test suite. Beyond the three commands:
+All five pass on `main`. `check:links` walks every markdown file in the repo and resolves every
+relative link and `#anchor`, skipping fenced code blocks. Beyond the commands:
 
-- **Docs changed?** Every relative link must resolve. Check each file you touched.
+- **Docs changed?** `npm run check:links`. It resolves both the file and the heading.
 - **Intro changed?** Walk the four `data-intro` states in
   [`intro.md`](intro.md) — `skip`, `play`, `repeat`, `done` — and the three failure layers.
+  `npm test` only proves the timeline arithmetic, not the motion.
+- **Motion changed at all?** It has never been reviewed in a browser. Say so when you hand it
+  over — [`rules.md`](rules.md).
 - **Assets changed?** Re-run the verification table above.
 - **CSS or markup changed?** Confirm in the built output, not the source:
 
