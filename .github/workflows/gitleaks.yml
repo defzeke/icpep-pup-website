@@ -1,0 +1,23 @@
+name: gitleaks
+
+# Scans commits for credentials. Reports on every push and PR; it does not block anything on
+# its own — there is no branch protection here, so treat a red run as a notification.
+# Default rules only: a .gitleaks.toml with no tuning in it would be noise.
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
