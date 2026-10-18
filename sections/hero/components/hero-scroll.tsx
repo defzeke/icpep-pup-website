@@ -5,7 +5,7 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 
 // Contract: docs/sections/hero/README.md.
-const PINNED = "400vh";
+const PINNED = "500vh";
 
 function sequence(section: HTMLElement) {
   return gsap.context(() => {
@@ -14,9 +14,10 @@ function sequence(section: HTMLElement) {
     const [visual] = q("[data-hero=visual]");
     const labels = q("[data-hero=label]");
     const [name] = q("[data-hero=name]");
-    const [phrase] = q("[data-hero=phrase]");
+    const [tagline] = q("[data-hero=tagline]");
+    const [description] = q("[data-hero=description]");
     const wash = q("[data-hero=wash]");
-    if (!logo || !visual || !name || !phrase) return;
+    if (!logo || !visual || !name || !tagline || !description) return;
 
     section.dataset.animated = "true";
     gsap.set(section, { height: PINNED });
@@ -27,20 +28,19 @@ function sequence(section: HTMLElement) {
     const dy = parent.clientHeight / 2 - (logo.offsetTop + logo.offsetHeight / 2);
 
     const tl = gsap.timeline({ paused: true, defaults: { ease: "none" } });
-    tl.to(visual, { scale: 1.3, duration: 0.25 }, 0)
-      .to(labels, { autoAlpha: 0, duration: 0.15 }, 0.05)
-      .fromTo(logo, { x: dx, y: dy }, { x: 0, y: 0, duration: 0.25 }, 0.3)
-      .fromTo(wash, { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power1.inOut" }, 0.28)
-      .to(visual, { scale: 1, duration: 0.25 }, 0.3)
-      .fromTo(name, { opacity: 0, x: 48 }, { opacity: 1, x: 0, duration: 0.15 }, 0.42)
-      .to(name, { opacity: 0, y: -24, duration: 0.1 }, 0.68)
-      .fromTo(
-        phrase,
-        { opacity: 0, y: 24, filter: "blur(10px)" },
-        { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.12 },
-        0.74
-      )
-      .to({}, { duration: 0.14 }, 0.86);
+    const blurIn = { opacity: 0, y: 24, filter: "blur(10px)" };
+    const shown = { opacity: 1, y: 0, filter: "blur(0px)" };
+    tl.to(visual, { scale: 1.3, duration: 0.2 }, 0)
+      .to(labels, { autoAlpha: 0, duration: 0.12 }, 0.04)
+      .fromTo(logo, { x: dx, y: dy }, { x: 0, y: 0, duration: 0.2 }, 0.24)
+      .fromTo(wash, { opacity: 0 }, { opacity: 1, duration: 0.24, ease: "power1.inOut" }, 0.22)
+      .to(visual, { scale: 1, duration: 0.2 }, 0.24)
+      .fromTo(name, { opacity: 0, x: 48 }, { opacity: 1, x: 0, duration: 0.12 }, 0.34)
+      .to(name, { opacity: 0, y: -24, duration: 0.08 }, 0.54)
+      .fromTo(tagline, blurIn, { ...shown, duration: 0.1 }, 0.6)
+      .to(tagline, { opacity: 0, y: -24, duration: 0.08 }, 0.76)
+      .fromTo(description, blurIn, { ...shown, duration: 0.1 }, 0.82)
+      .to({}, { duration: 0.08 }, 0.92);
 
     const update = () => {
       const span = section.offsetHeight - window.innerHeight;

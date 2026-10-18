@@ -4,9 +4,12 @@
 > **`Contact`** (deck pages 2–3, marked `02`/`03`), which is the closest related concept.
 > Everything below is a proposal.
 >
-> **Build status — built, destination still open.** `sections/join/join.tsx` renders the
-> section (label `join.sh`, marker from `lib/sections.ts`), but both actions still point at
-> `#join`: the join mechanism (§10.1) is undecided, so no real destination exists yet.
+> **Build status — built.** `sections/join/join.tsx` renders the section (label `join.sh`,
+> marker from `lib/sections.ts`). **The primary action is the chapter's Discord**
+> (`https://discord.gg/4FyKMPRkjb`, 2026-10-19), which answers §10.1: it opens in a new tab
+> (`rel="noopener noreferrer"`), carries a visible `↗`, and tells screen readers "(opens in a
+> new tab)". The secondary "Sign up as a member" still points at `#join` — a member sign-up
+> destination is still open.
 >
 > **Layout (2026-10-18):** a grid rather than a wrapping flex row, so the copy column is
 > `minmax(0, …)` and can never be forced wider than the screen by its contents. At `lg` it is

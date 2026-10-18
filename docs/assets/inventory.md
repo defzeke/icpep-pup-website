@@ -94,11 +94,11 @@ mixture does not show. Names and positions live in `data/officers.json`, and eac
 | `public/officers/avp4rel.PNG` | PNG | 875 × 714 | Executive |
 | `public/officers/avp4marketing.jpg` | JPEG | 768 × 1376 | Executive |
 | `public/officers/avp4ops.png` | PNG | 941 × 1672 | Executive |
-| `public/officers/vicepresident.jpg` | JPEG | 684 × 978 | Executive (added 2026-10-18) |
-| `public/officers/vp4ops.jpg` | JPEG | 1148 × 2049 | Executive (added 2026-10-18) |
-| `public/officers/treasurer.jpg` | JPEG | 1206 × 1204 | Executive (added 2026-10-18) |
-| `public/officers/auditor.jpg` | JPEG | 1206 × 1153 | Executive (added 2026-10-18) |
-| `public/officers/avp4graphics.jpg` | JPEG | 1206 × 1094 | Executive (added 2026-10-18) |
+| `public/officers/vicepresident.PNG` | JPEG, despite the extension | 746 × 1318 | Executive — replaced 2026-10-19 |
+| `public/officers/vp4ops.png` | PNG | 941 × 1672 | Executive — replaced 2026-10-19 |
+| `public/officers/treasurer.png` | PNG | 941 × 1672 | Executive — replaced 2026-10-19 |
+| `public/officers/auditor.png` | PNG | 941 × 1672 | Executive — replaced 2026-10-19 |
+| `public/officers/avp4graphics.png` | PNG | 941 × 1672 | Executive — replaced 2026-10-19 |
 | `public/officers/adviser.jpg` | JPEG | 900 × 900 | Adviser |
 | `public/officers/mascot.png` | PNG | 940 × 1672 | Pixie, as a 3D portrait in the same style — used by the Pixie card (alt as `pixie-illustration.png`) |
 

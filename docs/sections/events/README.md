@@ -10,7 +10,31 @@
 > right (6ms apart, `--duration-base` each) and `Reserve seat →` fades in; on touch screens,
 > which cannot hover, the words show from the start. The link is named `Reserve a seat: <event>`.
 > Bars come from [`lib/barcode.ts`](../../../lib/barcode.ts), seeded by the ticket's code so
-> they never change. Its destination is still `#events` — the reserve flow is §10.5.
+> they never change.
+>
+> **Events and the reserve action (2026-10-19).** The three tickets come from
+> **`data/events.json`** — `name`, `type`, `description`, `date`, `time`, `venue` — in page
+> order: *Ready to Deploy* (Mentorship), *CPE Challenge* (Competitive) and *CPElympics*
+> (Competitive). Date, time and venue are all `TBA`; the descriptions were drafted from the
+> chapter's one-line briefs and are theirs to edit. Registration is not open for any of them, so
+> the barcode is a `<button>` (`components/reserve-button.tsx`) that opens a native modal
+> `<dialog>` saying so: focus moves into it (onto Close) and returns to the button on close;
+> `Escape`, Close and a click on the veil all close it. When registration opens, the button
+> becomes a link to it.
+>
+> **The modal is a voided ticket** (2026-10-19): an Off-white panel with rounded corners, a
+> crimson header strip carrying the ticket's code and type, a rotated "Not yet open" rubber stamp,
+> the heading and explanation in the maroon family, then a dashed perforation above a footer with
+> `Status // TBA` and a crimson `[ Close ]`. Contrast as the tickets: crimson on Off-white 4.88:1,
+> maroon 9.14:1, white on crimson 5.74:1. **It is animated with GSAP, not CSS:** the Obsidian veil
+> fades in while the ticket rises 48px, untilts from −4° and scales up from 94% with a slight
+> overshoot (0.55s); on exit it drops and fades before the dialog is closed, and `Escape` is
+> intercepted (`cancel`) so it takes the same exit. A CSS-only version (`@starting-style`) was
+> replaced because the exit needs the `overlay` transition, which Firefox lacks. Under reduced
+> motion it opens and closes instantly.
+>
+> **Equal heights:** the grid stretches each ticket's cell to the tallest, and the flip wrapper
+> and the ticket are `h-full`, so all three cards match whatever their copy length.
 > The ruled-row list described below is superseded.
 >
 > **Draft 4 (2026-10-18) — the reveal**, after neutomni's packages sequence

@@ -3,19 +3,29 @@
 > **Status — draft 2 (2026-10-18).** Real portraits are in `public/officers/` (listed in
 > [inventory.md](../../assets/inventory.md#officer-portraits)), and the roster is
 > **`data/officers.json`** — one entry per portrait: `photo` (the exact filename), `name`,
-> `position`, `group` (`executive` | `adviser`). The file is the order on the page: president,
-> vice president, VPs, secretary, treasurer, auditor, AVPs, then advisers — 17 executives and one
-> adviser as of 2026-10-18, with the VPs and AVPs each in the same portfolio order (internal,
-> tech, ops, rel, marketing, graphics). Names and positions are blank until the chapter fills
-> them in, and render as `[Name]` / `[Position]` meanwhile.
+> `position`, `group` (`executive` | `adviser`). The file is the order on the page, set by the
+> chapter (2026-10-19): president, vice president, then each VP followed by their AVP — internal,
+> external (`vp4rel`/`avp4rel`) — then secretary, treasurer, auditor, then tech, graphics,
+> marketing and operations (`vp4ops`/`avp4ops`) as VP/AVP pairs, then the adviser. 17 executives
+> and one adviser. Names and positions are filled in by the chapter (2026-10-19); a blank one
+> would render as `[Name]` / `[Position]`.
 >
 > Each card (`sections/people/components/officer-card.tsx`) is a 4:5 frame (`object-cover
 > object-top`), then `ID // name` and `ROLE // position`. The portrait-filename label described
 > below is **not shown**, by decision (2026-10-18), even though every portrait exists. `alt` is
 > `"<name>, <position>"`, or empty while the name is blank so a screen reader does not announce
-> placeholders. Executives are a `<ul>` under a visually hidden `<h3>`; advisers keep their own
-> group and heading. The Pixie card now uses `public/officers/mascot.png`, a dark 3D portrait
-> that sits on Obsidian, in place of the white-backed illustration.
+> placeholders. Advisers keep their own group and heading. The Pixie card now uses
+> `public/officers/mascot.png`, a dark 3D portrait that sits on Obsidian, in place of the
+> white-backed illustration.
+>
+> **Draft 4 (2026-10-19) — a family-tree feel, not a strict tree.** A strict tree (draft 3: tiers
+> and VP → AVP branches from `level`/`branch` fields) was replaced by a looser chart that needs
+> nothing but the file's order (`components/officer-chart.tsx`): the **first** executive stands
+> alone and centred, a dashed drop leads to the **second**, another drop leads to a dashed rule,
+> and **everyone else** fills centred, wrapping rows beneath it — five to a row at `xl`, so the
+> fifteen fill three even rows. Cards are a fixed 13rem from `sm` (two to a row on phones), and
+> connectors are dashed `--color-crimson` at 60%, the **Rule** form. The adviser is excluded and
+> keeps its own group below. Reordering the JSON reorders the chart; no other field is needed.
 >
 > **Source status.** Nothing in the deck covers this section. The empty
 > `public/officers/` folder in the repo shows it was planned. Everything below is a

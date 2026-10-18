@@ -43,6 +43,7 @@ components/
     manila-clock.tsx  Live Manila clock (seconds) — currently unused
 data/
   officers.json       The roster: photo filename, name, position, group — in page order
+  events.json         The event tickets: name, type, description, date, time, venue — in page order
 lib/
   sections.ts         Page order. The single source of markers and filename labels — JSX-free
   placeholders.ts     Every lorem string on the site, in one place — delete when real copy lands
@@ -57,9 +58,9 @@ lib/
 sections/
   hero/hero.tsx       Glow mark, name and phrase. Holds the page's only <h1> (visually hidden)
   hero/components/hero-scroll.tsx  The pinned scroll sequence. "use client"
-  about/about.tsx     Marker 01 / about.md: the mark, mission and vision, then the process cards
+  about/about.tsx     Marker 01 / about.md: the mark beside Vision, then the process cards
   events/events.tsx
-  people/people.tsx   Officers from data/officers.json, advisers, the Pixie card
+  people/people.tsx   Officers as a centred chart (components/officer-chart.tsx), advisers, the Pixie card
   gallery/gallery.tsx Sticky headline with polaroid frames scrolling over it
   partners/partners.tsx
   join/join.tsx

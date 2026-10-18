@@ -16,6 +16,11 @@
 > ([motion.md](../../brand/motion.md#the-vocabulary)). The process cards follow in their own
 > full-width band — see [process](../process/README.md).
 >
+> **Draft 9 (2026-10-19).** A Vision → Tone swap (draft 8: a pinned sequence in which Vision slid
+> out, the mark crossed over and Tone slid in) was built and then **removed by decision**, with
+> Tone itself. About is back to the mark beside Vision, unpinned, on the full-width grid band; the
+> viewport reveal on the mark, label and statement stays.
+>
 > The hero above ends in a fade to `--color-carbon`, this section's background, so the two meet
 > without a seam — see [hero](../hero/README.md).
 >

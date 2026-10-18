@@ -23,18 +23,20 @@ Next is [about](../about/README.md).
   in the [header](../header-nav/README.md); the hero beneath it carries no visible headline,
   subhead or buttons (removed by decision, 2026-10-18).
 - **A pinned scroll sequence** (2026-10-18, after neutomni's pinned showreel and portfolio).
-  The section is 400vh tall; a sticky, viewport-high stage holds still for the first 300vh of
+  The section is 500vh tall; a sticky, viewport-high stage holds still for the first 400vh of
   scroll while one GSAP timeline plays against scroll position, then the page scrolls on
   normally. Over that distance:
 
   | Scroll | What happens |
   | --- | --- |
-  | 0–25% | The glow mark, centred, zooms to 1.3×; the four layer labels fade out |
-  | 28–58% | The mark slides left into its column and settles back to 1×, while a maroon wash (`.hero-wash`: maroon → deep maroon → Obsidian, centred where the mark lands) fades in behind it |
-  | 42–57% | `ICPEP.SE PUP MANILA` fades in on the right |
-  | 68–78% | The name fades out, rising |
-  | 74–86% | The phrase fades in from a 10px blur |
-  | 86–100% | Hold, then the stage releases |
+  | 0–20% | The glow mark, centred, zooms to 1.3×; the four layer labels fade out |
+  | 22–46% | The mark slides left into its column and settles back to 1×, while a maroon wash (`.hero-wash`: maroon → deep maroon → Obsidian, centred where the mark lands) fades in behind it |
+  | 34–46% | `ICPEP.SE PUP MANILA` fades in on the right |
+  | 54–62% | The name fades out, rising |
+  | 60–70% | The **tagline** fades in from a 10px blur |
+  | 76–84% | The tagline fades out, rising |
+  | 82–92% | The **description** fades in from a 10px blur |
+  | 92–100% | Hold, then the stage releases |
 
   Below `lg` the same sequence runs vertically: the mark rises from the centre and the text
   appears beneath it.
@@ -65,7 +67,8 @@ Next is [about](../about/README.md).
 | --- | --- | --- |
 | `<h1>` | `ICPEP.SE PUP MANILA`, **visually hidden** | The org's name |
 | Visible name | `ICPEP.SE PUP MANILA`, Title level, Bold, `aria-hidden` (the `<h1>` already says it) | The org's name |
-| Phrase | Placeholder — `heroPhrase` in [`lib/placeholders.ts`](../../../lib/placeholders.ts) | `TBC` |
+| Tagline | "Connecting Passion, Empowering Innovation" — Statement level, the second half in light orange | The chapter (2026-10-19) |
+| Description | "A student-led organization dedicated to nurturing the skills, knowledge, and leadership of Computer Engineering students." — Subheader level | The chapter (2026-10-19) |
 | Season line | *(none — removed 2026-10-18)* | — |
 | Visible headline / subhead | *(none — removed 2026-10-18)* | — |
 | Equation band | *(none — removed 2026-10-18)* | — |

@@ -1,8 +1,11 @@
 import { Label, Marker } from "@/components/ui/devices";
 import { markerOf } from "@/lib/sections";
 import { EventBack } from "./components/event-back";
-import { EventCard } from "./components/event-card";
+import events from "@/data/events.json";
+import { EventCard, type ChapterEvent } from "./components/event-card";
 import { EventsScroll } from "./components/events-scroll";
+
+const EVENTS: ChapterEvent[] = events;
 
 export function Events() {
   return (
@@ -37,10 +40,10 @@ export function Events() {
           </h2>
 
           <ul role="list" className="relative grid list-none gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {[0, 1, 2].map((i) => (
-              <li key={i} data-events="ticket">
-                <div data-events="flip" className="relative [transform-style:preserve-3d]">
-                  <EventCard index={i} />
+            {EVENTS.map((event, i) => (
+              <li key={event.name} data-events="ticket">
+                <div data-events="flip" className="relative h-full [transform-style:preserve-3d]">
+                  <EventCard event={event} index={i} />
                   <EventBack index={i} />
                 </div>
               </li>

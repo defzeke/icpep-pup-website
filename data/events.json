@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Ready to Deploy",
+    "type": "Mentorship",
+    "description": "A mentorship program pairing Computer Engineering students with mentors who guide them from first idea to finished build — with a chance to be recognized and awarded for the work.",
+    "date": "TBA",
+    "time": "TBA",
+    "venue": "TBA"
+  },
+  {
+    "name": "CPE Challenge",
+    "type": "Competitive",
+    "description": "Computer Engineering students from organizations and universities gather to compete for the title across a series of tech competitions.",
+    "date": "TBA",
+    "time": "TBA",
+    "venue": "TBA"
+  },
+  {
+    "name": "CPElympics",
+    "type": "Competitive",
+    "description": "A sports competition for Computer Engineering students — the chapter's engineers, off the keyboard and onto the field.",
+    "date": "TBA",
+    "time": "TBA",
+    "venue": "TBA"
+  }
+]

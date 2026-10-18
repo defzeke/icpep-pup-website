@@ -1,4 +1,3 @@
-import { PLACEHOLDER_COPY } from "@/lib/placeholders";
 import { HeroScroll } from "./components/hero-scroll";
 import { HeroVisual } from "./components/hero-visual";
 
@@ -29,10 +28,17 @@ export function Hero() {
               ICPEP.SE PUP MANILA
             </p>
             <p
-              data-hero="phrase"
-              className="max-w-[26ch] self-center text-subheader text-off-white group-data-[animated=true]:[grid-area:1/1]"
+              data-hero="tagline"
+              className="max-w-[18ch] self-center text-statement font-medium tracking-tight text-white group-data-[animated=true]:[grid-area:1/1]"
             >
-              {PLACEHOLDER_COPY.heroPhrase}
+              Connecting Passion, <span className="text-light-orange">Empowering Innovation</span>
+            </p>
+            <p
+              data-hero="description"
+              className="max-w-[34ch] self-center text-subheader text-off-white group-data-[animated=true]:[grid-area:1/1]"
+            >
+              A student-led organization dedicated to nurturing the skills, knowledge, and leadership
+              of Computer Engineering students.
             </p>
           </div>
         </div>

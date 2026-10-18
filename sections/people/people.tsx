@@ -2,6 +2,7 @@ import { Label, Marker } from "@/components/ui/devices";
 import { markerOf } from "@/lib/sections";
 import roster from "@/data/officers.json";
 import { OfficerCard, type Officer } from "./components/officer-card";
+import { OfficerChart } from "./components/officer-chart";
 import { PixieCard } from "./components/pixie-card";
 
 const OFFICERS: Officer[] = roster;
@@ -29,13 +30,7 @@ export function People() {
         </h2>
 
         <h3 className="sr-only">Executives</h3>
-        <ul role="list" className="grid list-none gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          {EXECUTIVES.map((officer) => (
-            <li key={officer.photo}>
-              <OfficerCard officer={officer} />
-            </li>
-          ))}
-        </ul>
+        <OfficerChart officers={EXECUTIVES} />
 
         {ADVISERS.length > 0 && (
           <div className="grid gap-10 border-t border-dashed border-crimson/60 pt-10 sm:grid-cols-2 lg:grid-cols-4">

@@ -34,10 +34,14 @@ export function Join() {
 
             <div className="flex flex-wrap items-center gap-4 sm:gap-7">
               <a
-                href="#join"
-                className="inline-flex min-h-14 items-center bg-crimson px-7 font-mono text-label font-medium uppercase tracking-[0.12em] text-white transition hover:brightness-110"
+                href="https://discord.gg/4FyKMPRkjb"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-14 items-center gap-2 bg-crimson px-7 font-mono text-label font-medium uppercase tracking-[0.12em] text-white transition hover:brightness-110"
               >
                 [[ Join the Discord ]]
+                <span aria-hidden="true">↗</span>
+                <span className="sr-only">(opens in a new tab)</span>
               </a>
               <a
                 href="#join"

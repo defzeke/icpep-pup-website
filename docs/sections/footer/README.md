@@ -3,8 +3,11 @@
 > **Status — draft 2 (2026-10-18).** `components/common/site-footer.tsx`:
 >
 > - **Removed:** the Navigate file listing, the Local clock column, and the written email
->   address. The Connect icons stay, including the email icon, which still links to the same
->   address.
+>   address. The Connect icons stay, now with the chapter's real destinations (2026-10-19):
+>   Facebook `facebook.com/icpepse.pupmanila`, Instagram `instagram.com/icpep.se_pup`, LinkedIn
+>   `linkedin.com/company/icpepse-pupmanila`, and `mailto:icpepse.pupmanila@gmail.com`. The
+>   three profiles open in a new tab (`rel="noopener noreferrer"`) and their accessible names add
+>   "(opens in a new tab)"; the email icon is named with the address it opens.
 > - **Logo:** `icpep-lockup-obsidian.png` — the white lockup made for dark surfaces — cropped to
 >   its artwork (447 × 310 of 710 × 355, from 118, 22) and shown 112px tall, so its trace
 >   wordmark is ~161px wide. The earlier `icpep-mono.png` at `h-10` rendered its 22.5%-of-canvas

@@ -17,12 +17,12 @@ async function copyrightYear() {
 const SOCIALS = [
   {
     label: "Facebook",
-    href: "#top",
+    href: "https://www.facebook.com/icpepse.pupmanila",
     icon: <path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v7h4v-7h3l1-4h-4V8z" strokeLinejoin="round" />,
   },
   {
     label: "Instagram",
-    href: "#top",
+    href: "https://www.instagram.com/icpep.se_pup/",
     icon: (
       <>
         <rect x="3" y="3" width="18" height="18" rx="5" />
@@ -33,7 +33,7 @@ const SOCIALS = [
   },
   {
     label: "LinkedIn",
-    href: "#top",
+    href: "https://www.linkedin.com/company/icpepse-pupmanila/home/",
     icon: (
       <>
         <rect x="3" y="3" width="18" height="18" rx="2" />
@@ -42,7 +42,7 @@ const SOCIALS = [
     ),
   },
   {
-    label: "Email",
+    label: "Email icpepse.pupmanila@gmail.com",
     href: "mailto:icpepse.pupmanila@gmail.com",
     icon: (
       <>
@@ -84,18 +84,22 @@ export async function SiteFooter() {
               Connect //
             </span>
             <div className="flex gap-2">
-              {SOCIALS.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  aria-label={social.label}
-                  className="inline-flex h-11 w-11 items-center justify-center border border-off-white/20 text-off-white transition-colors duration-[var(--duration-fast)] hover:text-light-orange"
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-                    {social.icon}
-                  </svg>
-                </a>
-              ))}
+              {SOCIALS.map((social) => {
+                const external = social.href.startsWith("http");
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    aria-label={external ? `${social.label} (opens in a new tab)` : social.label}
+                    {...(external && { target: "_blank", rel: "noopener noreferrer" })}
+                    className="inline-flex h-11 w-11 items-center justify-center border border-off-white/20 text-off-white transition-colors duration-[var(--duration-fast)] hover:text-light-orange"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+                      {social.icon}
+                    </svg>
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>
