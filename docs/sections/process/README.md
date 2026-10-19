@@ -6,7 +6,11 @@
 > runs nearly edge to edge (a 16–24px gutter). Above them, only a one-line intro (placeholder);
 > the `A → B` route marker and the ellipse `Our process` badge are removed, and `Our process`
 > remains as a visually hidden `<h3>` naming the list. Cards are 78svh tall while pinned (28rem
-> at rest) and step through the palette's **mass gradient**
+> at rest from `lg`, 20rem at `md`, and only as tall as their content on phones) and step through
+> the palette's **mass gradient**. Each card shows a `01 / 04` counter and, below `lg` where the
+> canvas does not run, a large ghosted step numeral at 20% opacity so the card is not an empty
+> slab. On phones, where the cards stack, a dashed crimson connector with a `↓` joins each card
+> to the next, so the four read as a sequence. The gradient's stops
 > ([color-palette.md](../../brand/color-palette.md#gradients-and-glow)): `--color-maroon`,
 > `--color-burgundy`, `--color-crimson` with white text (10.76, 8.95 and 5.74:1), then
 > `--color-bright-orange` with Obsidian text (6.13:1) for `REPEAT`, the loop, with a `↺`.

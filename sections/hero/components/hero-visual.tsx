@@ -28,7 +28,7 @@ export function HeroVisual() {
         <span data-hero="label" className={`float-layer-b right-0 top-[18%] border-r pr-2.5 ${LABEL}`}>
           Layer 03 // Networks
         </span>
-        <span data-hero="label" className={`float-layer-b left-0 -bottom-6 border-l pl-2.5 ${LABEL}`}>
+        <span data-hero="label" className={`float-layer-b left-0 -bottom-14 border-l pl-2.5 sm:-bottom-6 ${LABEL}`}>
           Layer 04 // Security
         </span>
       </div>

@@ -178,16 +178,32 @@ export function ProcessSteps() {
         <p className="max-w-[40ch] text-body text-off-white/80">{PLACEHOLDER_COPY.processIntro}</p>
 
         <div className="relative">
-          <ol role="list" className="grid list-none gap-3 md:grid-cols-2 lg:grid-cols-4">
+          <ol role="list" className="grid list-none gap-10 md:grid-cols-2 md:gap-3 lg:grid-cols-4">
             {STEPS.map((name, index) => {
               const loop = index === STEPS.length - 1;
+              const number = String(index + 1).padStart(2, "0");
               return (
                 <li
                   key={name}
                   data-step
-                  className={`flex min-h-[28rem] flex-col justify-between gap-10 p-6 lg:p-8 group-data-[animated=true]:h-[78svh] ${SURFACES[index]}`}
+                  className={`relative flex flex-col justify-between gap-8 p-6 md:min-h-80 lg:min-h-[28rem] lg:p-8 group-data-[animated=true]:h-[78svh] ${SURFACES[index]}`}
                 >
-                  <span className="font-mono text-label">{String(index + 1).padStart(2, "0")}</span>
+                  {/* Phones: a dashed connector and arrow lead down to the next step. */}
+                  {!loop && (
+                    <span
+                      aria-hidden="true"
+                      className="absolute left-1/2 top-full flex h-10 -translate-x-1/2 flex-col items-center md:hidden"
+                    >
+                      <span className="w-0 flex-1 border-l-2 border-dashed border-crimson" />
+                      <span className="font-mono text-label leading-none text-light-orange">↓</span>
+                    </span>
+                  )}
+                  <div className="flex items-start justify-between gap-4">
+                    <span className="font-mono text-label">{`${number} / ${String(STEPS.length).padStart(2, "0")}`}</span>
+                    <span aria-hidden="true" className="font-mono text-display font-bold leading-none opacity-20 lg:hidden">
+                      {number}
+                    </span>
+                  </div>
                   <div className="flex flex-col gap-3">
                     <span className="font-mono text-subheader font-bold">
                       {name}

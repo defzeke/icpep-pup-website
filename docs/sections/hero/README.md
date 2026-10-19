@@ -42,7 +42,8 @@ Next is [about](../about/README.md).
   appears beneath it.
 
   The four layer labels: 01 top-left and 03 top-right sit at the mark's upper corners, while
-  **02 and 04 sit just below the mark's box** (`-bottom-6`), right and left. The `ICPEP` and
+  **02 and 04 sit just below the mark's box** (`-bottom-6`), right and left — except below `sm`,
+  where the two would collide on a phone's width, so 04 drops one line lower (`-bottom-14`). The `ICPEP` and
   `SE PUP` traces reach to within ~6.5% of the image's bottom edge on both sides, so any lower
   position inside it collides with them. The stage's bottom 35svh fades to `--color-carbon` so
   the hero meets [about](../about/README.md) without a seam, wash or no wash.
