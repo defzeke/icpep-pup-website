@@ -44,10 +44,14 @@ export function Join() {
                 <span className="sr-only">(opens in a new tab)</span>
               </a>
               <a
-                href="#join"
-                className="inline-flex min-h-11 items-center border-b border-dashed border-light-orange font-mono text-label uppercase tracking-[0.12em] text-off-white transition-colors hover:text-light-orange"
+                href="https://icpep-membership-forms.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-11 items-center gap-2 border-b border-dashed border-light-orange font-mono text-label uppercase tracking-[0.12em] text-off-white transition-colors hover:text-light-orange"
               >
-                Sign up as a member →
+                Sign up as a member
+                <span aria-hidden="true">↗</span>
+                <span className="sr-only">(opens in a new tab)</span>
               </a>
             </div>
           </div>

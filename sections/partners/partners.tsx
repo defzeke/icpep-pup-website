@@ -1,6 +1,10 @@
 import { Label, Marker } from "@/components/ui/devices";
 import { markerOf } from "@/lib/sections";
-import { PartnerLogo } from "./components/partner-logo";
+import { GMAIL_COMPOSE } from "@/lib/contact";
+import partners from "@/data/partners.json";
+import { PartnerLogo, type Partner } from "./components/partner-logo";
+
+const PARTNERS: Partner[] = partners;
 
 export function Partners() {
   return (
@@ -23,16 +27,21 @@ export function Partners() {
             who back builders.
           </h2>
           <a
-            href="mailto:icpepse.pupmanila@gmail.com"
-            className="bracket inline-flex min-h-[52px] items-center border border-crimson px-6 font-mono text-label uppercase tracking-[0.12em] text-off-white transition-colors hover:text-light-orange"
+            href={GMAIL_COMPOSE}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bracket inline-flex min-h-[52px] items-center gap-2 border border-crimson px-6 font-mono text-label uppercase tracking-[0.12em] text-off-white transition-colors hover:text-light-orange"
           >
             Partner with us
+            <span aria-hidden="true">↗</span>
+            <span className="sr-only">(opens Gmail in a new tab)</span>
           </a>
         </div>
 
-        <ul className="grid grid-cols-2 gap-px border border-carbon bg-carbon sm:grid-cols-3 lg:grid-cols-6">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <PartnerLogo key={i} sponsor={i >= 3} />
+        <h3 className="sr-only">Partners</h3>
+        <ul role="list" className="mx-auto grid w-full max-w-6xl list-none gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {PARTNERS.map((partner) => (
+            <PartnerLogo key={partner.name} partner={partner} />
           ))}
         </ul>
       </div>

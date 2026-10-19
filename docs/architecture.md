@@ -42,10 +42,13 @@ components/
     status-chip.tsx   The header's clock. "use client" — currently unused
     manila-clock.tsx  Live Manila clock (seconds) — currently unused
 data/
-  officers.json       The roster: photo filename, name, position, group — in page order
+  officers.json       The roster: photo filename, name, position, group, optional bio — in page order
   events.json         The event tickets: name, type, description, date, time, venue — in page order
+  partners.json       The partner tiles: name, logo file, intrinsic size, tier
+  gallery.json        The gallery photos: file, size, fit, caption, alt text — in page order
 lib/
   sections.ts         Page order. The single source of markers and filename labels — JSX-free
+  contact.ts          The chapter's email and its Gmail compose link, shared by Partners and the footer
   placeholders.ts     Every lorem string on the site, in one place — delete when real copy lands
   manila-time.ts      The status chip's clock, read in Asia/Manila — JSX-free
   manila-time.test.ts

@@ -16,5 +16,11 @@
   { "photo": "avp4marketing.jpg", "name": "Risha Villones", "position": "Marketing AVP", "group": "executive" },
   { "photo": "vp4ops.png", "name": "Bianca Dela Cruz", "position": "Operations VP", "group": "executive" },
   { "photo": "avp4ops.png", "name": "Ayesha Zhyrile Infante", "position": "Operations AVP", "group": "executive" },
-  { "photo": "adviser.jpg", "name": "Engr. Rolito Mahaguay", "position": "Adviser", "group": "adviser" }
+  {
+    "photo": "adviser.jpg",
+    "name": "Engr. Rolito Mahaguay",
+    "position": "Adviser",
+    "group": "adviser",
+    "bio": "Engr. Rolito L. Mahaguay, MSE-Computer, is an Associate Professor I and Chairperson of the Computer Engineering Department at the Polytechnic University of the Philippines – College of Engineering. In this role, he advances curriculum, laboratory resources, and student development while also serving as the Faculty Adviser for ICPEP SE – PUP Manila."
+  }
 ]

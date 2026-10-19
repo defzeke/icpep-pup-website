@@ -73,6 +73,31 @@ Copy these verbatim; do not invent new wording per page.
 When a logo is decorative (for example, repeated in a footer directly beneath the header
 logo), use `alt=""` so screen readers skip it rather than announcing the org twice.
 
+## Partner logos
+
+Supplied by the chapter on 2026-10-19 — **third-party marks**, not from the deck. Shown in their
+own colours on an Off-white tile and never recoloured, since that needs the owner's permission
+(see [partners-sponsors](../sections/partners-sponsors/README.md)). Listed in
+`data/partners.json`.
+
+| File | Format | Size | Notes |
+| --- | --- | --- | --- |
+| `public/logos/cisco.png` | PNG, alpha | 8534 × 5984 | 4 MB; `next/image` serves it resized, but a smaller original would cut the first uncached request. A stylised graphic rather than Cisco's standard wordmark — confirm it is the mark Cisco expects partners to use |
+| `public/logos/prosple.png` | PNG, alpha | 1600 × 484 | Dark navy wordmark, which is why the tile is light |
+| `public/logos/whitecloak.png` | PNG, alpha | 3334 × 834 | Black wordmark; added 2026-10-19 |
+
+`alt` is empty on all three: the partner's name is printed beneath each tile.
+
+## Gallery photographs
+
+Supplied by the chapter on 2026-10-19, in `public/gallery/` (`1.png`–`15.jpg`), listed with their
+captions and **alt text** in `data/gallery.json`. The alt text describes what each image shows —
+written from the images themselves, per the gallery doc's hard requirement — and is the place to
+correct a name or a placing. Several are 3–6 MB PNGs (`2.png`–`4.png`); `next/image` resizes them,
+but smaller originals would cut the first, uncached request. Three wide images (`1.png`, `2.png`,
+`7.png`: a website screenshot, a video-call session and a group banner) are shown whole on a dark
+mat (`"fit": "contain"`) rather than cropped to the square frame.
+
 ## Officer portraits
 
 Supplied by the chapter on 2026-10-18 — **not** from the deck. Dark-backdrop, chest-up

@@ -1,0 +1,17 @@
+[
+  { "src": "1.png", "width": 1873, "height": 906, "fit": "contain", "caption": "ICpEP SE NCR website", "alt": "Screenshot of the ICpEP SE NCR website for A.Y. 2025–2026" },
+  { "src": "2.png", "width": 3360, "height": 2100, "fit": "contain", "caption": "Online mentorship", "alt": "An online coding session over video call, with code shared on screen" },
+  { "src": "3.png", "width": 4032, "height": 3024, "caption": "Ready to Deploy 2025", "alt": "Members gathered for a group photo in a classroom" },
+  { "src": "4.png", "width": 3024, "height": 4032, "caption": "Chapter meet", "alt": "Members posing for a group photo in a hallway" },
+  { "src": "5.jpg", "width": 1080, "height": 1080, "caption": "PUP Hackathon 2025", "alt": "Congratulations graphic: Team Disipet, 4th runner-up at the 2025 PUP Hackathon" },
+  { "src": "6.jpg", "width": 590, "height": 590, "caption": "PUP Hackathon 2025", "alt": "Congratulations graphic: Team Cicada, 1st runner-up at the 2025 PUP Hackathon" },
+  { "src": "7.png", "width": 1038, "height": 508, "fit": "contain", "caption": "CPE Challenge", "alt": "Students gathered for a group photo at the ICpEP NCR CPE Challenge" },
+  { "src": "8.jpg", "width": 2048, "height": 2048, "caption": "CPE Challenge · Quiz Bowl", "alt": "Congratulations graphic: Quiz Bowl champions at the CPE Challenge" },
+  { "src": "9.jpg", "width": 2048, "height": 2048, "caption": "CPE Challenge · C++", "alt": "Congratulations graphic: C++ Programming champion at the CPE Challenge" },
+  { "src": "10.jpg", "width": 2048, "height": 2048, "caption": "CPE Challenge · Best School", "alt": "Congratulations graphic: 2nd runner-up for Best School at the CPE Challenge" },
+  { "src": "11.jpg", "width": 2048, "height": 1365, "caption": "On stage", "alt": "Two students embracing on stage at a chapter event" },
+  { "src": "12.jpg", "width": 1365, "height": 2048, "caption": "Build", "alt": "A wheeled robot car wired to a battery pack and an ultrasonic sensor" },
+  { "src": "13.jpg", "width": 2048, "height": 1365, "caption": "Awarding", "alt": "Students holding certificates in front of a colorful event backdrop" },
+  { "src": "14.jpg", "width": 1080, "height": 1080, "caption": "PUP TechFest 2025", "alt": "PUP Technology Festival 2025 Hackathon graphic: Team Cicada, top 8 finalist" },
+  { "src": "15.jpg", "width": 1080, "height": 1080, "caption": "PUP TechFest 2025", "alt": "PUP Technology Festival 2025 Hackathon graphic: GDHC, 2nd place winner" }
+]

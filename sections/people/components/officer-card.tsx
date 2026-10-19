@@ -5,6 +5,7 @@ export type Officer = {
   name: string;
   position: string;
   group: string;
+  bio?: string;
 };
 
 export function OfficerCard({ officer }: { officer: Officer }) {

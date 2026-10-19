@@ -8,8 +8,8 @@
 > marker from `lib/sections.ts`). **The primary action is the chapter's Discord**
 > (`https://discord.gg/4FyKMPRkjb`, 2026-10-19), which answers §10.1: it opens in a new tab
 > (`rel="noopener noreferrer"`), carries a visible `↗`, and tells screen readers "(opens in a
-> new tab)". The secondary "Sign up as a member" still points at `#join` — a member sign-up
-> destination is still open.
+> new tab)". The secondary "Sign up as a member" goes to the chapter's membership form
+> (`https://icpep-membership-forms.vercel.app/`, 2026-10-19), opened the same way.
 >
 > **Layout (2026-10-18):** a grid rather than a wrapping flex row, so the copy column is
 > `minmax(0, …)` and can never be forced wider than the screen by its contents. At `lg` it is

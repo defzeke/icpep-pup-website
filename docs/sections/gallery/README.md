@@ -11,10 +11,14 @@
 > nine in a three-column flow (two below `md`), each with its own tilt (±3–8°) and drop (0–30svh)
 > so the grid never reads as one. The layer starts 75svh down so the headline opens clear, and
 > ends 45svh past the last frame so it clears again before the section leaves. The layer ignores
-> the pointer except on the frames themselves. **There are still no photographs**: each slot is
-> a hatched `[ photo ]` placeholder, and captions are `IMG_00N // [Caption]`. The captions are
-> Mono rather than the reference's handwriting, which this type system does not have. The 2×2
-> masonry grid described below is superseded.
+> the pointer except on the frames themselves. **Fifteen real photographs** (2026-10-19) come from
+> `data/gallery.json` — file, size, caption and alt text for each, described from the images
+> themselves (see [inventory.md](../../assets/inventory.md#gallery-photographs)). Each frame's
+> photo slot is square: photos and the square event graphics fill it (`object-cover`), while the
+> three wide images sit whole on a dark mat (`"fit": "contain"`). The tilt and drop pattern
+> repeats every nine frames, so the scatter holds for any count. Captions are short and in Mono,
+> not the reference's handwriting, which this type system does not have. The 2×2 masonry grid
+> described below is superseded.
 >
 > **Source status.** Nothing in the deck covers this section. The only relevant fact is
 > that social output exists in **1:1 (2048 × 2048)** and **4:5 (2160 × 2700)** (deck page 7,

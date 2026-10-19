@@ -33,7 +33,7 @@ export function People() {
         <OfficerChart officers={EXECUTIVES} />
 
         {ADVISERS.length > 0 && (
-          <div className="grid gap-10 border-t border-dashed border-crimson/60 pt-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="flex flex-col gap-10 border-t border-dashed border-crimson/60 pt-10">
             <div className="flex flex-col gap-3">
               <span className="font-mono text-label uppercase tracking-[0.14em] text-light-orange">
                 Advisers //
@@ -43,7 +43,10 @@ export function People() {
               </h3>
             </div>
             {ADVISERS.map((officer) => (
-              <OfficerCard key={officer.photo} officer={officer} />
+              <div key={officer.photo} className="grid items-center gap-8 sm:grid-cols-[14rem_minmax(0,1fr)] lg:gap-14">
+                <OfficerCard officer={officer} />
+                {officer.bio && <p className="max-w-[62ch] text-body text-off-white">{officer.bio}</p>}
+              </div>
             ))}
           </div>
         )}

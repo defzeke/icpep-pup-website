@@ -1,4 +1,5 @@
 import { cacheLife } from "next/cache";
+import { EMAIL, GMAIL_COMPOSE } from "@/lib/contact";
 import { FooterReveal } from "./footer-reveal";
 
 // Contract: docs/sections/footer/README.md.
@@ -42,8 +43,8 @@ const SOCIALS = [
     ),
   },
   {
-    label: "Email icpepse.pupmanila@gmail.com",
-    href: "mailto:icpepse.pupmanila@gmail.com",
+    label: `Email ${EMAIL} in Gmail`,
+    href: GMAIL_COMPOSE,
     icon: (
       <>
         <rect x="3" y="5" width="18" height="14" rx="2" />

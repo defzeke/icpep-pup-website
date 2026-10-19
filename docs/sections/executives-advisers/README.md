@@ -14,7 +14,9 @@
 > object-top`), then `ID // name` and `ROLE // position`. The portrait-filename label described
 > below is **not shown**, by decision (2026-10-18), even though every portrait exists. `alt` is
 > `"<name>, <position>"`, or empty while the name is blank so a screen reader does not announce
-> placeholders. Advisers keep their own group and heading. The Pixie card now uses
+> placeholders. Advisers keep their own group and heading; each adviser's card stands beside
+> their **`bio`** (an optional roster field, 2026-10-19 — Engr. Rolito L. Mahaguay's, as supplied
+> by the chapter), Body size within a 62ch measure, stacked below `sm`. The Pixie card now uses
 > `public/officers/mascot.png`, a dark 3D portrait that sits on Obsidian, in place of the
 > white-backed illustration.
 >

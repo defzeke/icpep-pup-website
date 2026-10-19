@@ -5,7 +5,8 @@
 > - **Removed:** the Navigate file listing, the Local clock column, and the written email
 >   address. The Connect icons stay, now with the chapter's real destinations (2026-10-19):
 >   Facebook `facebook.com/icpepse.pupmanila`, Instagram `instagram.com/icpep.se_pup`, LinkedIn
->   `linkedin.com/company/icpepse-pupmanila`, and `mailto:icpepse.pupmanila@gmail.com`. The
+>   `linkedin.com/company/icpepse-pupmanila`, and a Gmail compose window addressed to
+>   `icpepse.pupmanila@gmail.com` (`GMAIL_COMPOSE` in `lib/contact.ts`, as "Partner with us"). The
 >   three profiles open in a new tab (`rel="noopener noreferrer"`) and their accessible names add
 >   "(opens in a new tab)"; the email icon is named with the address it opens.
 > - **Logo:** `icpep-lockup-obsidian.png` — the white lockup made for dark surfaces — cropped to

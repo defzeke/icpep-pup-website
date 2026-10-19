@@ -7,7 +7,6 @@ export const PLACEHOLDER_COPY = {
     "Ship it where people can use it — a demo day, a public repo, a device that works off the bench.",
     "Review, refactor, run it again. Every cycle comes out sharper than the last.",
   ],
-  galleryCaption: "[Caption]",
   join: {
     headline: "Got something worth",
     headlineAccent: "BUILDING?",

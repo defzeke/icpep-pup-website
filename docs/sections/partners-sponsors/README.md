@@ -1,5 +1,22 @@
 # Partners / Sponsors
 
+> **Status — built (2026-10-19).** Three partners — **Cisco** and **Prosple** (long-term) and
+> **Whitecloak** (tier given only as "Partner" until the chapter says otherwise) — from
+> `data/partners.json` (`name`, `logo`, intrinsic `width`/`height`, `tier`), as three
+> equal 3:2 tiles in a centred row (two, then one, column on smaller screens). **Logos are
+> balanced by area, not fitted to the box:** each is `38% × √(aspect ratio)` of the tile's width,
+> capped at 80%, so Cisco's tall mark and the two long wordmarks carry similar visual weight
+> instead of the wordmarks shrinking to slivers. Each logo sits in its **own colours on an
+> Off-white tile** — the answer to §5's "as supplied vs monochrome" question: recolouring needs
+> permission, and Prosple's dark navy mark would vanish on Obsidian. Beneath each tile, the
+> partner's name and tier in Mono; the logo itself is `alt=""` so the name is not announced twice.
+> No partner URLs were supplied, so the tiles are not links (§7: no dead links). The placeholder
+> six-cell wall is gone.
+>
+> **"Partner with us"** opens a Gmail compose window addressed to the chapter
+> (`GMAIL_COMPOSE` in `lib/contact.ts`) in a new tab — it needs the visitor to be signed in to
+> Gmail; anyone who is not lands on Gmail's sign-in first.
+>
 > **Source status.** Nothing in the deck covers this section. Everything below is a
 > proposal.
 
